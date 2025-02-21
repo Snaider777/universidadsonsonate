@@ -1,19 +1,35 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const bannerHeight = document.getElementById('/images/Banner-2.png').offsetHeight;
+      if (window.scrollY > bannerHeight) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="flex flex-row bg-gradient-to-r from-[#2e8ac3] to-[#0068d888] text-white p-7 fixed w-full justify-end">
+    <nav className={`flex flex-row ${scrolled ? 'bg-blue-800' : 'bg-gradient-to-b from-[#030709] to-[#9f9f9f00]'} text-white p-12 fixed w-full justify-end`}>
       <ul className="hidden md:flex space-x-4">
         <li>
           <Link href="/">Admisión</Link>
         </li>
         <li>
-          <Link href="/" className="flex flex-row items-center gap-2">
-          Oferta academica
-          <div className="bg-white w-2 h-2"></div>
-          </Link>
+          <Link href="/">Oferta academica</Link>
         </li>
         <li>
           <Link href="/">Institución</Link>
@@ -22,7 +38,7 @@ export default function Navbar() {
           <Link href="/">Educación Continua</Link>
         </li>
         <li>
-          <Link href="/">Diección de Calidad, Investigación y Proyección Social</Link>
+          <Link href="/">Dirección de Calidad, Investigación y Proyección Social</Link>
         </li>
       </ul>
     </nav>
