@@ -12,8 +12,8 @@ export default function Home() {
             <img src= "/images/BlueWave2.png" alt="BlueWave2" className = "absolute w-[120px] top-[142px]"/>
             <img src= "/images/BlueWave1.png" alt="BlueWave1" className = "absolute w-[120px] top-[134px]"/>
           </div>
-          <h1 className="text-4xl font-sans font-semibold text-center">Transformamos tu futuro <br/>con educación de calidad</h1>
-          <div className="flex flex-row justify-center">
+          <h1 className="text-4xl font-sans font-semibold text-center ">Transformamos tu futuro <br/>con educación de calidad</h1>
+          <div className="flex flex-row justify-center m-4">
             <div className="bg-[#1A73E8] text-white font-sans font-semibold text-lg px-4 py-2 rounded-lg mt-4 mr-4">CICLO 02/2025</div>
             <button className="bg-[#1A73E8] text-white font-sans font-semibold text-lg px-4 py-2 rounded-lg mt-4">Conoce más</button>
           </div>

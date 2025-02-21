@@ -23,7 +23,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`flex flex-row ${scrolled ? 'bg-blue-800' : 'bg-gradient-to-b from-[#030709] to-[#9f9f9f00]'} text-white p-12 fixed w-full justify-end`}>
+    <nav className={`flex flex-row ${scrolled ? 'bg-blue-800 pb-5 fixed w-full justify-end' : 'bg-gradient-to-b from-[#030709] to-[#9f9f9f00]'} text-white p-11 fixed w-full justify-end`}>
       <ul className="hidden md:flex space-x-4">
         <li>
           <Link href="/">Admisión</Link>
