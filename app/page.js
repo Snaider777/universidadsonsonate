@@ -1,7 +1,8 @@
+import Section1 from '/components/Section1'
 export default function Home() {
   return (
     <>
-      <div className = "bg-[url('/images/Banner-2.png')] bg-cover bg-center h-[85vh] w-screen flex items-center justify-center bg-fixed">
+      <div className = "bg-[url('/images/Banner-2.png')] bg-cover bg-center h-[100vh] w-screen flex items-center justify-center bg-fixed">
         <header className = "flex flex-row items-center justify-center flex-wrap">
         <div className = "flex relative w-[250px] h-[200px] justify-center">
             <img src= "/images/Shield.png" alt="Shield" className = "absolute w-[142px] top-[36px]"/>
@@ -18,12 +19,7 @@ export default function Home() {
           </div>
         </header>
       </div>
-      <div className="flex flex-row justify-center h-[15vh] bg-white w-screen">
-      </div>
-      <div className="flex flex-row justify-center h-[70vh] bg-gray-300 w-screen">
-      </div>
-      <div className="flex flex-row justify-center h-[70vh] bg-white w-screen">
-      </div>
-      </>
+      <Section1 />
+    </>
   )
 }

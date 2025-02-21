@@ -8,7 +8,7 @@ export default function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const bannerHeight = document.getElementById('/images/Banner-2.png').offsetHeight;
+      const bannerHeight = document.getElementById('/images/Banner-2.png');
       if (window.scrollY > bannerHeight) {
         setScrolled(true);
       } else {
