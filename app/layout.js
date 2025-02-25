@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
-import Navbar from "@/Components/NavBar";
-import SubNavBar from "@/Components/SubNavBar";
+import Navbar from "@/Components/Global/NavBar";
+import SubNavBar from "@/Components/Global/SubNavBar";
 
 export default function RootLayout({ children }) {
   return (
