@@ -115,19 +115,19 @@ export default function Navbar() {
                 <div className="absolute w-[35px] h-[3px] bg-black -rotate-45"></div>
               </button>
             </div>
-            <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Institución</Link>
+            <Link href="/nuestraInstitucion" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Institución</Link>
             <ul>
               <li>
-                <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Visión, Misión</Link>
+                <Link href="/nuestraInstitucion/tourUSO" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Tour USO</Link>
               </li>
               <li>
-                <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Nuestra Historia</Link>
+                <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Investigaciones USO</Link>
               </li>
               <li>
-                <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Ubicación</Link>
+                <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Espacio USO</Link>
               </li>
               <li>
-                <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Unidades Academicas Administrativas</Link>
+                <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center flex flex-row justify-center items-center">Unidades Academicas</Link>
               </li>
             </ul>
           </div>
