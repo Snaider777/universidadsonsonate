@@ -101,11 +101,11 @@ const BienvenidaUSO = () => {
           </motion.button>
         </motion.div>
         <Slider 
-          key={slides.id}
           className="relative flex items-center justify-center w-full lg:w-1/2 h-auto mt-8 lg:mr-10"
           {...config}>
           {slides.map((slide, index) => (
           <motion.div
+            key={index}
             variants={divAnimation}
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
