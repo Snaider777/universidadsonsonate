@@ -45,57 +45,72 @@ const SlideOfertaAcademica = () => {
   };
 
   return (
-    <section ref={ref} className="relative overflow-hidden">
-      <Slider {...config}>
-        {facultades.map((facultad, index) => (
-          <div key={index}>
-            <div className="relative h-[70vh] md:h-[80vh] w-full">
-              {/* Imagen de fondo */}
-              <Image
-                src={facultad.imagen}
-                alt={facultad.nombre}
-                fill
-                objectFit="cover"
-                quality={75}
-                priority={index === 0}
-              />
-              {/* Capa de superposición */}
-              <div className="absolute inset-0 bg-blue-950 opacity-50"></div>
-              {/* Contenido sobrepuesto */}
-              <div className="absolute inset-0 flex flex-col justify-center items-start max-w-2xl mx-auto px-6 md:px-12">
-                <motion.h2
-                  className="text-3xl md:text-5xl font-bold text-white mb-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8 }}
-                >
-                  {facultad.nombre}
-                </motion.h2>
-                <motion.p
-                  className="text-lg md:text-2xl text-white mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  {facultad.descripcion}
-                </motion.p>
-                <motion.button
-                  className="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-900"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-
-                  //Opcion dinamica clionClick={() => window.open(`/ofertaAcademica/${facultad.nombre.toLowerCase().replace(/\s+/g, '-')}`, '_self')}
-                >
-                  Ver más
-                </motion.button>
-              </div>
+    <section ref={ref} className="relative overflow-hidden bg-white">
+      <div className="w-full h-auto bg-[#0f8fce] justify-center items-center">
+        <div className="w-full h-auto relative p-8 flex flex-col lg:px-80 text-center ">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 flex flex-col">Nuestra Oferta Academica</h2>
+          <p className="text-base md:text-lg lg:text-xl mb-4">Únete a nuestra comunidad y descubre cómo puedes alcanzar tus metas académicas y profesionales en un ambiente que promueve la innovación, el crecimiento personal y el éxito. ¡Te esperamos!</p>
+        </div>
+      </div>
+      <div className="relative justify-center items-center container mx-auto bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-white">
+          <div className="p-6">
+                <h3 className="text-2xl font-bold text-blue-600 mb-4">
+                    Investigaciones
+                </h3>
+                <p className="text-gray-700 mb-6">
+                    Descubre los proyectos de investigación que estamos llevando a cabo para impulsar el conocimiento y el desarrollo tecnológico.
+                </p>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Ver más
+                </button>
             </div>
-          </div>
-        ))}
-      </Slider>
+            <div className="p-6">
+                <h3 className="text-2xl font-bold text-blue-600 mb-4">
+                    Próximos Eventos
+                </h3>
+                <p className="text-gray-700 mb-6">
+                    Mantente al día con los eventos y actividades que tenemos preparados para este ciclo académico.
+                </p>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Ver más
+                </button>
+            </div>
+            <div className="p-6">
+                <h3 className="text-2xl font-bold text-blue-600 mb-4">
+                    Próximos Eventos
+                </h3>
+                <p className="text-gray-700 mb-6">
+                    Mantente al día con los eventos y actividades que tenemos preparados para este ciclo académico.
+                </p>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Ver más
+                </button>
+            </div>
+            <div className="p-6">
+                <h3 className="text-2xl font-bold text-blue-600 mb-4">
+                    Próximos Eventos
+                </h3>
+                <p className="text-gray-700 mb-6">
+                    Mantente al día con los eventos y actividades que tenemos preparados para este ciclo académico.
+                </p>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Ver más
+                </button>
+            </div>
+            <div className="p-6">
+                <h3 className="text-2xl font-bold text-blue-600 mb-4">
+                    Próximos Eventos
+                </h3>
+                <p className="text-gray-700 mb-6">
+                    Mantente al día con los eventos y actividades que tenemos preparados para este ciclo académico.
+                </p>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Ver más
+                </button>
+            </div>
+        </div>
+      </div>
     </section>
   );
 };
