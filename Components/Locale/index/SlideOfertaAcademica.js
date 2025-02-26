@@ -48,7 +48,7 @@ const SlideOfertaAcademica = () => {
     visible: {opacity: 1, x:0}
   };
   const divAnimation = {
-    hidden: {opacity: 0, y:-50},
+    hidden: {opacity: 0, y:80},
     visible:{opacity: 1, y:0}
   };
   return (
@@ -75,7 +75,7 @@ const SlideOfertaAcademica = () => {
       <div className="relative justify-center items-center container mx-auto bg-[#0f8fce] px-4 overflow-hidden">
       <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={inView ? {opacity: 1, x: 0 } : {}}
+            animate={inView ? {opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
             <motion.div

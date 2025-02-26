@@ -133,7 +133,7 @@ export default function Navbar() {
           </div>
         </li>
         <li className="flex flex-col">
-          <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center">Educación Continua</Link>
+          <Link href="https://usonsonate.edu.sv/educacion-continua" className="hover:bg-blue-600 py-9 px-3 text-center">Educación Continua</Link>
         </li>
         <li className="flex flex-col">
           <Link href="/" className="hover:bg-blue-600 py-9 px-3 text-center">Dirección de Calidad, Investigación y Proyección Social</Link>

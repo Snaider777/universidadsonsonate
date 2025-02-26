@@ -9,8 +9,8 @@ const NoticiasUSO = () => {
 const { ref, inView } = useInView();
 
 return (
-    <section ref={ref} className="relative overflow-hidden bg-blue-500  py-12">
-    <div className="bg-blue-500 relative container mx-auto px-4">
+    <section ref={ref} className="relative overflow-hidden bg-[#0f8fce]  py-12">
+    <div className="bg-[#0f8fce] relative container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/*Investigaciones*/}
         <motion.div

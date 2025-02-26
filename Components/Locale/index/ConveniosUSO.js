@@ -97,8 +97,8 @@ const divAnimation = {
     visible: { opacity: 1, x: 0 },
 }
 return (
-    <section className="relative overflow-hidden py-12 bg-blue-500 ">
-    <div ref={ref} className="bg-blue-500  relative container mx-auto px-4 ">
+    <section className="relative overflow-hidden py-12 bg-[#0f8fce] ">
+    <div ref={ref} className=" bg-[#0f8fce] relative container mx-auto px-4 ">
     <motion.h2
         className="text-3xl md:text-4xl font-bold text-center text-white mb-8"
         initial={{ opacity: 0, x: 50 }}
