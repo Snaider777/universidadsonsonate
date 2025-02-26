@@ -15,7 +15,6 @@ export default function Navbar() {
         setScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -23,7 +22,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`flex flex-row ${scrolled ? 'bg-blue-800 pb-5 fixed w-full justify-end' : 'bg-gradient-to-b from-[#030709] to-[#9f9f9f00]'} text-white p-11 fixed w-full justify-end`}>
+    <nav className={`flex flex-row ${scrolled ? 'bg-blue-800 pb-3 fixed w-full justify-end' : 'bg-white text-white p-11 absolue w-full justify-end'}`}>
       <ul className="hidden md:flex space-x-4">
         <li>
           <Link href="/">Admisión</Link>

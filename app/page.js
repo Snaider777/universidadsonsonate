@@ -1,8 +1,13 @@
 import Section1 from '/components/Section1'
+import FacultadesCarousel from '@/Components/Carousel'
+import BannerSection from '@/Components/Banner'
+import ConveniosSection from '@/Components/Convenios'
+import NoticiasUso from '@/Components/Noticias'
+
 export default function Home() {
   return (
     <>
-      <div className = "bg-[url('/images/Banner-2.png')] bg-cover bg-center h-[100vh] w-screen flex items-center justify-center bg-fixed">
+      <div className = "bg-[url('/images/Banner-2.png')] bg-cover bg-center h-[100vh] w-full flex items-center justify-center bg-fixed">
         <header className = "flex flex-row items-center justify-center flex-wrap">
         <div className = "flex relative w-[250px] h-[200px] justify-center">
             <img src= "/images/Shield.png" alt="Shield" className = "absolute w-[142px] top-[36px]"/>
@@ -19,7 +24,16 @@ export default function Home() {
           </div>
         </header>
       </div>
+      <div className="flex flex-row justify-center items-center h-[0.01vh] bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 w-full"></div>
       <Section1 />
+      <div className="flex flex-row justify-center items-center h-[0.01vh] bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 w-full"></div>
+      <FacultadesCarousel />
+      {/*<div className="flex flex-row justify-center items-center h-[0.01vh] bg-blue-500 w-full"></div>*/}
+      {/*<BannerSection />*/}
+      <div className="flex flex-row justify-center items-center h-[0.01vh] bg-blue-500 w-full"></div>
+      <NoticiasUso />
+      <div className="flex flex-row justify-center items-center h-[0.01vh] bg-blue-500 w-full"></div>
+      <ConveniosSection />
     </>
   )
 }
