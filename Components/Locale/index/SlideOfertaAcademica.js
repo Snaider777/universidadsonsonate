@@ -31,7 +31,7 @@ const facultades = [
   }
 ];
 
-const FacultadesCarousel = () => {
+const SlideOfertaAcademica = () => {
   const { ref, inView } = useInView();
   const config = {
     dots: true,
@@ -86,7 +86,8 @@ const FacultadesCarousel = () => {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => window.open(`/facultades/${facultad.nombre.toLowerCase().replace(/\s+/g, '-')}`, '_self')}
+
+                  //Opcion dinamica clionClick={() => window.open(`/ofertaAcademica/${facultad.nombre.toLowerCase().replace(/\s+/g, '-')}`, '_self')}
                 >
                   Ver más
                 </motion.button>
@@ -99,4 +100,4 @@ const FacultadesCarousel = () => {
   );
 };
 
-export default FacultadesCarousel;
+export default SlideOfertaAcademica;

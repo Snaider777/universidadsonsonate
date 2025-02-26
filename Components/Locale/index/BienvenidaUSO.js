@@ -25,17 +25,9 @@ const slides = [
     imagen: "/images/Banner3.jpg",
 }
 ];
-const Section1 = () => {
+const BienvenidaUSO = () => {
   const [isClient, setIsClient] = useState(false);
   const { ref, inView } = useInView();
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return null;
-  }
 
   // Animaciones
   const textAnimation = {
@@ -179,4 +171,4 @@ const Section1 = () => {
   );
 };
 
-export default Section1;
+export default BienvenidaUSO;

@@ -1,9 +1,8 @@
-import CampusSection from "@/Components/CampusSection";
+import ConveniosUSO from "@/Components/Locale/nuestraInstitucion/tourUSO/CampusUSO";
 export default function NuestraIntitucion(){
     return(
         <>
-        <div className="flex flex-row justify-center items-center h-[0.01vh] bg-white w-full"></div>
-            <CampusSection />
+            <ConveniosUSO />
         </>
     )
 }

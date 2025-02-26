@@ -5,7 +5,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const NoticiasUso = () => {
+const NoticiasUSO = () => {
 const { ref, inView } = useInView();
 
 return (
@@ -86,4 +86,4 @@ return (
 );
 };
 
-export default NoticiasUso;
+export default NoticiasUSO;

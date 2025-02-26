@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const CampusSection = () => {
+const ConveniosUSO = () => {
   const categorias = [
     "Biblioteca",
     "Edificio A",
@@ -289,4 +289,4 @@ const imagenesCampus = [
   );
 };
 
-export default CampusSection;
+export default ConveniosUSO;

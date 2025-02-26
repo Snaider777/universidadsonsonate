@@ -39,7 +39,7 @@ const convenios = [
 
 Modal.setAppElement("#__next");
 
-const ConveniosSection = () => {
+const ConveniosUSO = () => {
 const [modalIsOpen, setModalIsOpen] = useState(false);
 const [currentConvenio, setCurrentConvenio] = useState(null);
 const {ref, inView} = useInView();
@@ -171,4 +171,4 @@ return (
 );
 };
 
-export default ConveniosSection;
+export default ConveniosUSO;

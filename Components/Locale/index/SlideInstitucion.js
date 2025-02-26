@@ -27,7 +27,7 @@ const slides = [
 }
 ];
 
-const BannerSection = () => {
+const SlideInstitucion = () => {
 const [isClient, setIsClient] = useState(false);
 const { ref, inView } = useInView();
 
@@ -101,4 +101,4 @@ return (
 );
 };
 
-export default BannerSection;
+export default SlideInstitucion;
