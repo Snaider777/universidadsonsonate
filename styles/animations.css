@@ -1,0 +1,43 @@
+@keyframes Rotar{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.Rotar2s{
+    animation: Rotar 2s linear infinite;
+}
+.Rotar3s{
+    animation: Rotar 3s linear infinite;
+}
+
+@keyframes Pulso{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.08);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.Pulso{
+    animation: Pulso 3s linear infinite;
+}
+@keyframes Flecha{
+    0%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(-4px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.Flecha{
+    animation: Flecha 2s linear infinite;
+}
