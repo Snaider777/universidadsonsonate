@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, scroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Slider from "react-slick";
 import Link from 'next/link';
@@ -26,25 +26,46 @@ const slides = [
 }
 ];
 const BienvenidaUSO = () => {
-  const [isClient, setIsClient] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState(null);
   const { ref, inView } = useInView();
-
+  useEffect(() => {
+    let scrollUlti = window.scrollY;
+    const leerScrollDire = () =>{
+      let scrollActu = window.scrollY;
+      if(scrollActu > scrollUlti){
+        setScrollDirection('down');
+      }else{
+        setScrollDirection('up');
+      }
+      scrollUlti = scrollActu > 0 ? scrollActu : 0;
+    };
+    window.addEventListener('scroll', leerScrollDire);
+    return () => {
+      window.removeEventListener('scroll', leerScrollDire);
+    };
+  }, []);
   // Animaciones
   const textAnimation = {
-    hidden: { opacity: 0, x: -90 },
-    visible: { opacity: 1, x: 0 }
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
   };
   const divAnimation = {
     hidden: { opacity: 0, x: 90 },
-    visible: { opacity: 1, x: 0 }
+    visible: { opacity: 1, x: 0 },
+    up: {opacity: 1, y: 20},
+    down: {opacity: 1, y: -0}
   };
   const figuraAnition={
-    hidden: {opacity: 0, y: -100},
-    visible: {opacity: 1, x: 0}
+    hidden: {opacity: 0, y: -50},
+    visible: {opacity: 1, x: 10},
+    up: {opacity: 1, y: 0},
+    down: {opacity: 1, y: 0}
   };
   const imgAnimation = {
     hidden: { opacity: 0, x: 90 },
-    visible: { opacity: 1, x: 0 }
+    visible: { opacity: 1, x: 0 },
+    up: {opacity: 1, y: 20},
+    down: {opacity: 1, y: -70}
   };
   const config = {
     
@@ -57,13 +78,13 @@ const BienvenidaUSO = () => {
     pauseOnHover: false,
 };
   return (
-    <div ref={ref} className="overflow-hidden bg-[#0f8fce]">
+    <div ref={ref} className="overflow-hidden bg-[#1f3d7a]">
       {/* Sección con fondo mejorado */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={inView ? {opacity: 1, x: 0 } : {}}
+        initial={{ opacity: 0, scale: 1 }}
+        animate={inView ? (scrollDirection === 'down' ? divAnimation.down : divAnimation.up) : divAnimation.hidden}
         transition={{ duration: 0.8 }}
-        className="relative flex flex-col md:flex-col lg:flex-row lg:w-screen justify-center items-center h-auto w-full p-4 bg-[#0f8fce]"
+        className="relative flex flex-col md:flex-col lg:flex-row lg:w-screen justify-center items-center h-auto w-full p-4 bg-[#1f3d7a]"
       >
         {/* Contenido de texto */}
           <motion.div
@@ -106,7 +127,6 @@ const BienvenidaUSO = () => {
           {slides.map((slide, index) => (
           <motion.div
             key={index}
-            variants={divAnimation}
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
             transition={{duration: 1}}
@@ -181,13 +201,13 @@ const BienvenidaUSO = () => {
         </motion.div>*/}
       </motion.div>
       <motion.div
-          initial={{opacity: 0, y: 40}}
-          animate={inView ? 'visible' : 'hidden'}
+          initial={{opacity: 0, y: 20}}
+          animate={inView ? (scrollDirection === 'down' ? divAnimation.down : divAnimation.up) : divAnimation.hidden}
           transition={{duration: 0.9}}
           variants={figuraAnition}
       >
         <div className="relative w-full h-16">
-              <div className="absolute top-0 left-0 w-full h-20 bg-[#05ce0e] transform -skew-y-2 origin-top-left"
+              <div className="absolute top-0 left-0 w-full h-20 bg-[#05ce0e] transform -skew-y-3 origin-top-left"
               ></div>
         </div>
       </motion.div>

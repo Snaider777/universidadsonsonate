@@ -103,8 +103,8 @@ const MisionVisionHistoriaSection = () => {
                         <motion.div
                             key={index}
                             className="mb-10 ml-6"
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={inView ? { opacity: 1, y: 0 } : {}}
+                            initial={{ opacity: 0 }}
+                            animate={inView ? { opacity: 1 } : {}}
                             transition={{ duration: 0.8, delay: index * 0.2 }}
                         >
                             <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-green-600 rounded-full ring-8 ring-white dark:ring-green-300">
@@ -116,15 +116,21 @@ const MisionVisionHistoriaSection = () => {
                                     <path d="M10 15a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM10 9a1.5 1.5 0 10-1.5-1.5A1.5 1.5 0 0010 9z"></path>
                                 </svg>
                             </span>
-                            <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-green-600">
-                                    {evento.año} - {evento.titulo}
-                            </h3>
-                            <div className="flex flex-col md:flex-row lg-flex-row justify-center">
-                                <p className="flex mb-2 text-base font-normal text-gray-600 md:w-1/2 ">
-                                    {evento.descripcion}
-                                </p>
-                                <img src={evento.imagen} alt={evento.titulo} className=" flex w-full md:w-1/2 h-1/2 mt-11 lg:mt-0 rounded-lg shadow-lg " />
-                            </div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                animate={inView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.8, delay: index * 0.2 }}
+                            >
+                                <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-green-600">
+                                        {evento.año} - {evento.titulo}
+                                </h3>
+                                <div className="flex flex-col md:flex-row lg-flex-row justify-center">
+                                    <p className="flex mb-2 text-base font-normal text-gray-600 md:w-1/2 ">
+                                        {evento.descripcion}
+                                    </p>
+                                    <img src={evento.imagen} alt={evento.titulo} className=" flex w-full md:w-1/2 h-1/2 mt-11 lg:mt-0 rounded-lg shadow-lg " />
+                                </div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>

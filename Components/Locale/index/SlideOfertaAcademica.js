@@ -52,8 +52,8 @@ const SlideOfertaAcademica = () => {
     visible:{opacity: 1, y:0}
   };
   return (
-    <section ref={ref} className="relative overflow-hidden bg-[#0f8fce] py-12">
-      <div className="w-full h-auto bg-[#0f8fce] justify-center items-center">
+    <section ref={ref} className="relative overflow-hidden bg-[#1f3d7a] py-12">
+      <div className="w-full h-auto bg-[#1f3d7a] justify-center items-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? {opacity: 1, x: 0 } : {}}
@@ -72,7 +72,7 @@ const SlideOfertaAcademica = () => {
         </motion.div>
         </motion.div>
       </div>
-      <div className="relative justify-center items-center container mx-auto bg-[#0f8fce] px-4 overflow-hidden">
+      <div className="relative justify-center items-center container mx-auto bg-[#1f3d7a] px-4 overflow-hidden">
       <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? {opacity: 1, y: 0 } : {}}
@@ -82,7 +82,7 @@ const SlideOfertaAcademica = () => {
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
               variants={divAnimation}
-              transition={{ duration: 1 }}
+              transition={{ duration: 1, delay: 0.5}}
             >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 ">
           
