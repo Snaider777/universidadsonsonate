@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { motion, scroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-const TourUSO = () => {
+const InicioTour = () => {
     const [scrollDirection, setScrollDirection] = useState(null);
     const { ref, inView } = useInView();
     useEffect(() => {
@@ -107,5 +107,5 @@ const TourUSO = () => {
     );
   };
   
-  export default TourUSO;
+  export default InicioTour;
   

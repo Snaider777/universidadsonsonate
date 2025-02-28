@@ -1,7 +1,7 @@
 import Link from "next/link";
 export default function Footer(){
     return(
-        <footer className=" bg-blue-700 w-[100wh]">
+        <footer className=" bg-[#1f3d7aaf] w-[100wh]">
             <div className="flex flex-col items-center justify-center w-[100%]">
                 <div className="flex flex-col w-[100%] md:flex-row">
                     <div className="flex flex-col justify-center items-center py-5 gap-5 md:w-[35%]">
