@@ -198,7 +198,7 @@ const imagenesCampus = [
   );
 
   return (
-    <section ref={ref} className="py-15 bg-[#1f3d7a]" >
+    <section ref={ref} className="py-12 bg-[#1f3d7a]" >
       <motion.div
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
