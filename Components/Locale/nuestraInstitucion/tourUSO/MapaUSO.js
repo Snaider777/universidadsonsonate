@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -32,10 +31,10 @@ const MapaUSO = () => {
   };
 
   return (
-    <div ref={ref} className="relative flex flex-col items-center justify-center py-16 px-4 bg-white">
+    <div ref={ref} className="relative flex flex-col items-center justify-center py-16 px-4 bg-[#1f3d7a]">
       {/* Título */}
       <motion.h2
-        className="text-3xl md:text-4xl font-bold text-blue-800 mb-4"
+        className="text-3xl md:text-4xl font-bold text-white mb-4"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={tituloAnimacion}
@@ -46,7 +45,7 @@ const MapaUSO = () => {
 
       {/* Descripción */}
       <motion.p
-        className="text-lg md:text-xl text-gray-700 text-center max-w-2xl mb-8"
+        className="text-lg md:text-xl text-white text-center max-w-2xl mb-8"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={descripcionAnimacion}
@@ -69,9 +68,8 @@ const MapaUSO = () => {
             {/* Ícono de ubicación */}
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z" />
           </svg>
-          <p className="text-base text-center text-gray-700 items-center max-w-2xl mb-8">Calle Ing. Jesús Adalberto Díaz Pineda y Avenida Central Final Colonia 14 de Diciembre, Sonsonate, El Salvador C.A.</p>
+          <p className="text-base text-center text-white items-center max-w-2xl mb-8">Calle Ing. Jesús Adalberto Díaz Pineda y Avenida Central Final Colonia 14 de Diciembre, Sonsonate, El Salvador C.A.</p>
         </div>
-        {/* Puedes agregar más divs similares con otros íconos e información */}
       </motion.div>
 
       {/* Imagen o botón para mostrar el mapa */}

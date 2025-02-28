@@ -41,7 +41,7 @@ const MisionVisionHistoriaSection = () => {
     const [verMas, setVerMas] = useState(false);
 
     return (
-        <section ref={ref} className="overflow-hidden bg-white py-12 mb-11">
+        <section ref={ref} className="overflow-hidden bg-[#1f3d7a] py-12 mb-11">
             <div className="container mx-auto px-4 md:flex-row">
                 {/* Sección de Misión y Visión */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 mt-20">
@@ -82,7 +82,7 @@ const MisionVisionHistoriaSection = () => {
                 >
                     <div className="relative w-full h-16">
                         <div 
-                            className="absolute top-0 left-0 w-full h-11 bg-green-700 transform -skew-y-2 origin-top-left"
+                            className="absolute top-0 left-0 w-full h-11 bg-green-600 transform -skew-y-2 origin-top-left"
                             variants={divanimation}>
                         </div>
             </div>
@@ -90,7 +90,7 @@ const MisionVisionHistoriaSection = () => {
             {/* Línea de Tiempo de la Historia */}
             <div className="relative">
                 <motion.h2
-                    className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-8"
+                    className="text-3xl md:text-4xl font-bold text-center text-green-300 mb-8"
                     initial={{ opacity: 0, y: -20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8 }}
@@ -98,7 +98,7 @@ const MisionVisionHistoriaSection = () => {
                     Historia de la Universidad de Sonsonate
                 </motion.h2>
 
-                <div className="relative border-l border-gray-200 dark:border-green-700 lg:flex-row">
+                <div className="relative border-l border-gray-200 dark:border-green-600 lg:flex-row">
                     {eventosHistoria.slice(0, verMas ? eventosHistoria.length : 1).map((evento, index) => (
                         <motion.div
                             key={index}
@@ -121,11 +121,11 @@ const MisionVisionHistoriaSection = () => {
                                 animate={inView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.8, delay: index * 0.2 }}
                             >
-                                <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-green-600">
+                                <h3 className="flex items-center mb-1 text-lg font-semibold text-green-300">
                                         {evento.año} - {evento.titulo}
                                 </h3>
                                 <div className="flex flex-col md:flex-row lg-flex-row justify-center">
-                                    <p className="flex mb-2 text-base font-normal text-gray-600 md:w-1/2 ">
+                                    <p className="flex mb-2 text-base font-normal text-white md:w-1/2 ">
                                         {evento.descripcion}
                                     </p>
                                     <img src={evento.imagen} alt={evento.titulo} className=" flex w-full md:w-1/2 h-1/2 mt-11 lg:mt-0 rounded-lg shadow-lg " />

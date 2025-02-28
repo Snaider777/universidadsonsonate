@@ -17,11 +17,11 @@ const divanimation = {
 const Mensaje = () =>{
     const {ref, inView} = useInView();
     return(
-        <section ref={ref} className="overflow-hidden bg-white py-12">
+        <section ref={ref} className="overflow-hidden bg-[#1f3d7a] py-12">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 mb-20" >
                     <motion.div
-                        className="felx flex-col justify-center items-start bg-blue-500 p-8 rounded-lg shadow.lg"
+                        className="felx flex-col justify-center items-start bg-blue-600 p-8 rounded-lg shadow.lg"
                         initial={{opacity: 0, x: -50}}
                         animate={inView ? {opacity: 1, x: 0 } : {}}
                         transition={{duration: 0.9}}
@@ -52,11 +52,10 @@ const Mensaje = () =>{
                     animate={inView ? {opacity: 1, x: 0 } : {}}
                     transition={{duration: 0.9}}
                 ><div className="relative w-full h-16">
-                        <div className="absolute top-0 left-0 w-full h-20 bg-blue-700 transform -skew-y-2 origin-top-left"
+                        <div className="absolute top-0 left-0 w-full h-20 bg-blue-600 transform -skew-y-2 origin-top-left"
                         variants={divanimation}></div>
                 </div>
                 </motion.div>
-                {/*<iframe class="w-full rounded-xl" height="650" src="https://website.usonsonate.edu.sv/tour/index.html"></iframe>*/}
             </div>
         </section>
     );

@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import { useInView } from 'react-intersection-observer';
 import { motion, AnimatePresence } from "framer-motion";
 
-const ConveniosUSO = () => {
+const CampusUSO = () => {
+  const { ref, inView } = useInView();
   const categorias = [
     "Biblioteca",
     "Edificio A",
@@ -196,17 +198,17 @@ const imagenesCampus = [
   );
 
   return (
-    <section className="py-12 bg-white">
+    <section ref={ref} className="py-15 bg-[#1f3d7a]" >
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
         variants={divanimation}
         transition={{ duration: 0.8 }}
       >
         <div className="container mx-auto px-4"
           
         >
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-8">
           Nuestro Campus
         </h2>
 
@@ -256,18 +258,18 @@ const imagenesCampus = [
               variants={divanimation}
               transition={{ duration: 0.8 }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-blue-700 mb-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 {imagenSeleccionada.titulo}
               </h3>
               <div className="text-lg md:text-xl text-gray-700 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {imagenSeleccionada.Array.map((item, index) => (
                   <div key={index} className="">
-                    <h3 className="text-2xl md:text-3xl font-bold text-blue-700 mb-4">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                       {item.ti}
                     </h3>
                     <div>
                       {item.Array && item.Array.map((item, index) => (
-                        <p key={index} className="text-lg md:text-xl text-gray-700">{item.p}</p>
+                        <p key={index} className="text-lg md:text-xl text-white">{item.p}</p>
                       ))}
                     </div>
                   </div>
@@ -289,4 +291,4 @@ const imagenesCampus = [
   );
 };
 
-export default ConveniosUSO;
+export default CampusUSO;
