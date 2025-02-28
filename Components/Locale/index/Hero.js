@@ -1,6 +1,6 @@
 export default function Hero(){
     return(
-    <section className = "bg-[url('/images/Banner.png')] bg-cover bg-center bg- h-[100vh] w-screen flex items-center justify-center bg-fixed">
+    <section className = "bg-[url('/images/Banner.png')] bg-cover bg-center bg- h-[100vh] w-full flex items-center justify-center bg-fixed">
         <header className = "relative flex flex-col items-center gap-x-[30px]">
             <div className = "flex relative w-[150px] h-[165px] justify-center">
                 <img src= "/images/Shield.png" alt="Shield" className = "absolute w-[142px] top-0 Pulso"/>
