@@ -121,7 +121,10 @@ return (
             </p>
         </div>
     </motion.div>
-    <Slider {...config}>
+    <Slider 
+
+        {...config}
+    >
         {convenios.map((convenio, index) => (
             <div key={index} className="px-2">
                 <motion.div

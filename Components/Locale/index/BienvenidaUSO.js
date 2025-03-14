@@ -122,7 +122,7 @@ const BienvenidaUSO = () => {
           </motion.button>
         </motion.div>
         <Slider 
-          className="relative flex items-center justify-center w-full lg:w-1/2 h-auto mt-8 lg:mr-10"
+          className="relative flex items-center justify-center w-5/6 lg:w-1/2 h-auto mt-8 lg:mr-10"
           {...config}>
           {slides.map((slide, index) => (
           <motion.div
