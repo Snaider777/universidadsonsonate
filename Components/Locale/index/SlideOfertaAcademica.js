@@ -1,157 +1,106 @@
 "use client";
 
-import React from "react";
-import Slider from "react-slick";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Image from 'next/image';
+import React, { useState } from "react";
 
+// Datos estáticos de facultades
 const facultades = [
   {
     nombre: "Ingeniería en Sistemas",
     descripcion: "Forma parte del futuro tecnológico con nuestra carrera de Ingeniería en Sistemas.",
     imagen: "/images/ingenieriasistemas.jpg",
+    categoria: "Ingeniería en Sistemas",
+    href: "/oferta/ingenieria-sistemas"
   },
   {
     nombre: "Administración de Empresas",
     descripcion: "Desarrolla tus habilidades en gestión y liderazgo empresarial.",
-    imagen: "/images/ingenieriasistemas.jpg",
+    imagen: "/images/img-inicio-2.png",
+    categoria: "Administración de Empresas",
+    href: "/oferta/administracion-empresas"
   },
   {
     nombre: "Derecho",
     descripcion: "Contribuye a la justicia y al bienestar social estudiando Derecho.",
     imagen: "/images/juridica.webp",
+    categoria: "Derecho",
+    href: "/oferta/derecho"
   },
   {
     nombre: "Psicología",
     descripcion: "Comprende el comportamiento humano y ayuda a los demás con Psicología.",
     imagen: "/images/psicologia.webp",
+    categoria: "Psicología",
+    href: "/oferta/psicologia"
   }
 ];
 
-const SlideOfertaAcademica = () => {
-  const { ref, inView } = useInView();
-  const config = {
-    dots: true,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    speed: 800,
-    fade: true,
-    arrows: false,
-    pauseOnHover: false,
-  };
-  const textAnimation = {
-    hidden: {opacity: 0, x: -90},
-    visible: {opacity: 1, x:0}
-  };
-  const divAnimation = {
-    hidden: {opacity: 0, y:80},
-    visible:{opacity: 1, y:0}
-  };
+// Temas para filtro (incluye 'Todo')
+const topics = ["Todo", ...facultades.map(f => f.categoria)];
+
+export default function SlideOfertaAcademica() {
+  const [selectedTopic, setSelectedTopic] = useState("Todo");
+  const filtered = facultades.filter(
+    f => selectedTopic === "Todo" || f.categoria === selectedTopic
+  );
+
   return (
-    <section ref={ref} className="relative overflow-hidden bg-[#1f3d7a] py-12">
-      <div className="w-full h-auto bg-[#1f3d7a] justify-center items-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={inView ? {opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.div
-            initial="hidden"
-            animate={inView ? 'visible' : 'hidden'}
-            variants={textAnimation}
-            transition={{ duration: 1 }}
+    <section className="py-12 bg-gray-900">
+      {/* Contenedor general: fondo y padding */}
+      <div className="max-w-7xl mx-auto px-4 text-white">
+        {/* Título */}
+        <h2 className="text-3xl font-bold text-center mb-8">Oferta Académica</h2>
+
+        {/* Controles de filtro y shuffle */}
+        <div className="flex items-center justify-center space-x-2 mb-6">
+          <select
+            className="px-4 py-2 bg-white text-gray-900 rounded-full focus:outline-none"
+            value={selectedTopic}
+            onChange={e => setSelectedTopic(e.target.value)}
           >
-            <div className="w-full h-auto relative p-8 flex flex-col lg:px-80 text-center ">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 flex flex-col">Nuestra Oferta Academica</h2>
-              <p className="text-base md:text-lg lg:text-xl mb-4">Únete a nuestra comunidad y descubre cómo puedes alcanzar tus metas académicas y profesionales en un ambiente que promueve la innovación, el crecimiento personal y el éxito. ¡Te esperamos!</p>
-            </div>
-        </motion.div>
-        </motion.div>
-      </div>
-      <div className="relative justify-center items-center container mx-auto bg-[#1f3d7a] px-4 overflow-hidden">
-      <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={inView ? {opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            {topics.map(t => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+          <span className="text-white">o</span>
+          {/* 'Shuffle' opcional, si deseas mezclar */}
+          <button
+            onClick={() => setSelectedTopic("Todo")}
+            className="px-4 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition"
           >
-            <motion.div
-              initial="hidden"
-              animate={inView ? 'visible' : 'hidden'}
-              variants={divAnimation}
-              transition={{ duration: 1, delay: 0.5}}
-            >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 ">
-          
-            <div className="p-6 rounded-lg shadow-lg overflow-hidden bg-white">
-                  <img src="/images/ingenieriasistemas.jpg" alt="FICN" className="rounded-lg"></img>
-                  <h3 className="text-2xl font-bold text-blue-600 my-4">
-                      Facultad de Ingenieria y Ciencias Naturales
-                  </h3>
-                  <p className="text-gray-700 mb-6">
-                  La Facultad de Ciencias Naturales e Ingenieria. En esta Facultad
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                      Ver más
-                  </button>
-              </div>
-              <div className="p-6 rounded-lg shadow-lg overflow-hidden bg-white">
-                  <img src="/images/juridica.webp" alt="FICN" className="rounded-lg"></img>
-                  <h3 className="text-2xl font-bold text-blue-600 my-4">
-                      Facultad de Economia y Ciencias Sociales
-                  </h3>
-                  <p className="text-gray-700 mb-6">
-                  La Facultad de Ciencias Sociales y Economica tiene
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                      Ver más
-                  </button>
-              </div> 
-              <div className="p-6 rounded-lg shadow-lg overflow-hidden bg-white">
-              <img src="/images/juridica.webp" alt="FICN" className="rounded-lg"></img>
-                  <h3 className="text-2xl font-bold text-blue-600 my-4">
-                      Facultad de Ciencias Juridica
-                  </h3>
-                  <p className="text-gray-700 mb-6">
-                  Facultad de cIencias Jurídicas su fin es formar profesionales del derecho con domin..
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                      Ver más
-                  </button>
-              </div>
-              <div className="p-6 rounded-lg shadow-lg overflow-hidden bg-white">
-              <img src="/images/ingenieriasistemas.jpg" alt="FICN" className="rounded-lg"></img>
-                  <h3 className="text-2xl font-bold text-blue-600 my-4">
-                      Maestrias
-                  </h3>
-                  <p className="text-gray-700 mb-6">
-                      Mantente al día con los eventos y actividades que tenemos preparados para este ciclo académico.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                      Ver más
-                  </button>
-              </div>
-              <div className="p-6 rounded-lg shadow-lg overflow-hidden bg-white">
-              <img src="/images/juridica.webp" alt="FICN" className="rounded-lg"></img>
-                  <h3 className="text-2xl font-bold text-blue-600 my-4">
-                      Escuela de Educacion
-                  </h3>
-                  <p className="text-gray-700 mb-6">
-                      Mantente al día con los eventos y actividades que tenemos preparados para este ciclo académico.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                      Ver más
-                  </button>
-              </div>
+            Reset
+          </button>
         </div>
-        </motion.div>
-            </motion.div>
+
+        {/* Grid de facultades */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {filtered.map((item, idx) => {
+            // Asigna tamaños distintos: el primero ocupa más espacio
+            const spanClass = idx === 0
+              ? "col-span-2 row-span-2"
+              : "col-span-1 row-span-1";
+
+            return (
+              <a
+                key={idx}
+                href={item.href}
+                className={
+                  `relative block overflow-hidden bg-black rounded-lg group ${spanClass}`
+                }
+              >
+                <img
+                  src={item.imagen}
+                  alt={item.nombre}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <h3 className="text-xl font-bold">{item.nombre}</h3>
+                  <p className="mt-1 text-sm">{item.descripcion}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
-};
-
-export default SlideOfertaAcademica;
+}
