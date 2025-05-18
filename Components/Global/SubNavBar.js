@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="z-20 flex flex-row bg-white text-black font-sans h-[4vh] w-full fixed items-center justify-center">
+    <nav className="z-20 flex flex-row bg-blue-900 text-white font-sans h-[4vh] w-full fixed items-center justify-end">
       <ul className="flex flex-row space-x-4">
         <li>
           <Link href="https://sinapsis.usonsonate.edu.sv/login/index.php">Sinapsis</Link>

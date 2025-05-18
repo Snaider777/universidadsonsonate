@@ -1,3 +1,4 @@
+import SocialButtons from './SocialButtons';
 export default function Hero(){
     return(
     <section className = "bg-[url('/images/Banner.png')] bg-cover bg-center bg- h-[100vh] w-full flex items-center justify-center bg-fixed">
@@ -16,6 +17,7 @@ export default function Hero(){
                 <button className="text-white bg-blue-500 p-3 rounded-3xl w-[200px]">Explorar facultades</button>
             </div>
             </header>
+            <SocialButtons />
     </section>  
     )
 }
