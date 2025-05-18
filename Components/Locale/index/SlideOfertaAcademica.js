@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Datos estáticos de facultades
+// Datos de facultades
 const facultades = [
   {
     nombre: "Ingeniería en Sistemas",
@@ -78,7 +78,7 @@ const facultades = [
     href: "/oferta/derecho",
   },
   {
-    nombre: "Licenciatura en A¿Matematica",
+    nombre: "Licenciatura en Matematica",
     descripcion:
       "Comprende el comportamiento humano y ayuda a los demás con Psicología.",
     imagen: "/images/psicologia.webp",
@@ -174,61 +174,53 @@ const facultades = [
     href: "/oferta/contabilidad",
   },
 ];
-
-// Generamos un arreglo de facultades únicas (por categoría) y de temas únicos para el filtro
-const uniqueFacultades = [
-  ...new Map(facultades.map((item) => [item.categoria, item])).values(),
+const gridOptions = [
+  "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-2 row-span-2",
 ];
+
+// Categorías únicas para el filtro
 const topics = ["Todo", ...new Set(facultades.map((f) => f.categoria))];
 
 export default function SlideOfertaAcademica() {
   const [selectedTopic, setSelectedTopic] = useState("Todo");
+  const [displayItems, setDisplayItems] = useState([]);
 
-  // Si "Todo" está seleccionado, utilizamos uniqueFacultades para mostrar solo un representante por categoría;
-  // Si se selecciona una categoría en particular, filtramos sobre el arreglo original para obtener TODOS los elementos de esa categoría.
-  const filtered =
-    selectedTopic === "Todo"
-      ? uniqueFacultades
-      : facultades.filter((f) => f.categoria === selectedTopic);
+  useEffect(() => {
+    let items =
+      selectedTopic === "Todo"
+        ? [...facultades].sort(() => Math.random() - 0.5)
+        : facultades.filter((f) => f.categoria === selectedTopic);
 
-  // Clases para asignar distintos tamaños y posiciones (se reparten cíclicamente)
-  const layoutClasses = [
-    "col-span-2 row-span-2",
-    "col-span-1 row-span-1",
-    "col-span-1 row-span-2",
-    "col-span-2 row-span-1",
-  ];
-  // Fondos de colores para que cada cuadro tenga un tono distinto
-  const bgColors = [
-    "bg-blue-500",
-    "bg-red-500",
-    "bg-green-500",
-    "bg-yellow-500",
-    "bg-purple-500",
-  ];
+    // Asigna a cada ítem un gridClass aleatorio de gridOptions
+    items = items.map((item) => ({
+      ...item,
+      gridClass: gridOptions[Math.floor(Math.random() * gridOptions.length)],
+    }));
+
+    setDisplayItems(items);
+  }, [selectedTopic]);
 
   return (
     <section className="py-12 bg-blue-900">
       <div className="max-w-7xl mx-auto px-4 text-white">
-        {/* Título principal */}
-        <h2 className="text-3xl font-bold text-center mb-8">
-          Oferta Académica
-        </h2>
+        <h2 className="text-3xl font-bold text-center mb-8">Oferta Académica</h2>
 
-        {/* Controles de filtro */}
+        {/* Filtro */}
         <div className="flex items-center justify-center space-x-2 mb-6">
           <select
-            className="px-4 py-2 bg-white text-gray-900 rounded-full focus:outline-none"
+            className="px-4 py-2 bg-white text-gray-900 rounded-full"
             value={selectedTopic}
             onChange={(e) => setSelectedTopic(e.target.value)}
           >
-            {topics.map((t, index) => (
-              <option key={index} value={t}>
+            {topics.map((t) => (
+              <option key={t} value={t}>
                 {t}
               </option>
             ))}
           </select>
-          <span className="text-white">o</span>
           <button
             onClick={() => setSelectedTopic("Todo")}
             className="px-4 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition"
@@ -237,38 +229,44 @@ export default function SlideOfertaAcademica() {
           </button>
         </div>
 
-        {/* Grid responsivo con animaciones y distintas configuraciones */}
+        {/* Grid tipo Tetris */}
+        {/* Se define grid-cols-[repeat(auto-fill,minmax(200px,1fr))] y auto-rows fijo (por ejemplo, 150px) */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 grid-flow-dense auto-rows-[150px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {filtered.map((item, idx) => {
-            const layoutClass = layoutClasses[idx % layoutClasses.length];
-            const bgColor = bgColors[idx % bgColors.length];
-            return (
+          <AnimatePresence>
+            {displayItems.map((item, idx) => (
               <motion.a
-                key={idx}
+                key={item.nombre + idx}
                 href={item.href}
-                className={`relative block overflow-hidden rounded-lg group ${layoutClass} ${bgColor}`}
-                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                className={`relative overflow-hidden group rounded-lg ${item.gridClass} bg-black`}
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: -50 }}
-                transition={{ delay: idx * 0.2, duration: 0.5 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: idx * 0.05, duration: 0.4 }}
               >
-                <img
-                  src={item.imagen}
-                  alt={item.nombre}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                  <h3 className="text-xl font-bold">{item.nombre}</h3>
-                  <p className="mt-1 text-sm">{item.descripcion}</p>
+                {/* Contenedor interno para que la imagen y el overlay llenen el espacio */}
+                <div className="relative w-full h-full">
+                  <img
+                    src={item.imagen}
+                    alt={item.nombre}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-3">
+                    <h3 className="text-sm font-semibold text-white">
+                      {item.nombre}
+                    </h3>
+                    <p className="text-xs text-gray-200">
+                      {item.descripcion}
+                    </p>
+                  </div>
                 </div>
               </motion.a>
-            );
-          })}
+            ))}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>
