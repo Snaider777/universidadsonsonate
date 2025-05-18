@@ -8,18 +8,16 @@ export default function Navbar() {
   const [navOpen, setNavOpen] = React.useState(false);
   const [open, setOpen] = React.useState(null);
 
-  const Menu = (menuId)=>{
-      setOpen(open === menuId ? null : menuId);
-  }
-  const navBar = ()=>{
+  const Menu = (menuId) => {
+    setOpen(open === menuId ? null : menuId);
+  };
+  const navBar = () => {
     setNavOpen(!navOpen);
-}
+  };
 
-/*
   React.useEffect(() => {
     const handleScroll = () => {
-      const bannerHeight = document.getElementById('/images/Banner-2.png');
-      if (window.scrollY > bannerHeight) {
+      if (window.scrollY > 50) { // Ajusta este valor según necesites
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -31,41 +29,81 @@ export default function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-*/
 
   return (
-    <nav className= "bg-gradient-to-b from-[#0307096b] to-[#9f9f9f00] text-white font-semibold font-sans h-[10vh] top-[4vh] flex items-center justify-between fixed w-full z-50">
-
+    <nav
+      className={`fixed w-full z-50 h-[10vh] top-[4vh] flex items-center justify-between font-semibold font-sans text-white transition-colors duration-300 ${
+        scrolled
+          ? "bg-blue-700 text-white shadow-md" // Fondo azul y texto blanco al hacer scroll
+          : "bg-gradient-to-b from-[#0307096b] to-[#9f9f9f00]" // Clases para cuando está en la parte superior
+      }`}
+    >
       {/*Logo de la universidad blanco (Izquierda de la navbar)*/}
       <Link href="/" className="px-3">
-        <img src= "/images/LogoWhite.png" alt="LogoWhite" className = "w-32"/>
+        <img
+          src={scrolled ? "/images/LogoWhite.png" : "/images/LogoWhite.png"} // Mantengo el logo blanco en ambos estados por ahora
+          alt={scrolled ? "LogoWhite" : "LogoWhite"}
+          className="w-32"
+        />
       </Link>
 
       {/*Menu de hamburguesa (Oculta en vista de PC)*/}
-      <button onClick = {() => navBar()} className = "px-4 flex flex-col gap-2 md:hidden">
-        <div className = {`${navOpen ? 'transition-all duration-200 rotate-45 translate-y-[9.5px]' : 'transition-all duration-200'} h-[2px] w-[30px] bg-white`}></div>
-        <div className = {`${navOpen ? 'transition-all duration-200 opacity-0' : 'transition-all duration-200'} h-[2px] w-[30px] bg-white`}></div>
-        <div className = {`${navOpen ? 'transition-all duration-200 -rotate-45 -translate-y-[9.5px]' : 'transition-all duration-200'} h-[2px] w-[30px] bg-white`}></div>
+      <button onClick={() => navBar()} className="px-4 flex flex-col gap-2 md:hidden">
+        <div
+          className={`${
+            navOpen
+              ? "transition-all duration-200 rotate-45 translate-y-[9.5px]"
+              : "transition-all duration-200"
+          } h-[2px] w-[30px] ${scrolled ? 'bg-white' : 'bg-white'}`} // Mantengo el icono blanco
+        ></div>
+        <div
+          className={`${
+            navOpen ? "transition-all duration-200 opacity-0" : "transition-all duration-200"
+          } h-[2px] w-[30px] ${scrolled ? 'bg-white' : 'bg-white'}`} // Mantengo el icono blanco
+        ></div>
+        <div
+          className={`${
+            navOpen
+              ? "transition-all duration-200 -rotate-45 -translate-y-[9.5px]"
+              : "transition-all duration-200"
+          } h-[2px] w-[30px] ${scrolled ? 'bg-white' : 'bg-white'}`} // Mantengo el icono blanco
+        ></div>
       </button>
 
       {/*Inicio de la lista de opciones de la navbar*/}
-      <ul className={`${navOpen ? 'transition-all duration-300' : 'transition-all duration-300 translate-x-[-100%]'} absolute flex flex-col h-[100vh] w-[70%] top-[0vh] bg-blue-600
-       md:translate-x-[0] md:static md:flex-row md:h-auto md:w-auto md:gap-4 md:bg-transparent md:items-center`}>
-
+      <ul
+        className={`${
+          navOpen
+            ? "transition-all duration-300"
+            : "transition-all duration-300 translate-x-[-100%]"
+        } absolute flex flex-col h-[100vh] w-[70%] top-[0vh] ${
+          scrolled ? "bg-blue-700 text-white" : "bg-blue-700 text-white"
+        }
+        md:translate-x-[0] md:static md:flex-row md:h-auto md:w-auto md:gap-4 md:bg-transparent md:items-center`}
+      >
         {/*Primera opcion*/}
         <li className="flex flex-col">
-
           {/*Boton que despliega el menu de opciones de admision (Oculto en vista de PC)*/}
-          <button onClick={() => Menu(1)} className="py-10 px-8 flex flex-row justify-start items-center md:hidden hover:bg-blue-700">
-            <img src= "/images/Admisiones.png" alt="WhiteShield" className = "w-7"/>
+          <button
+            onClick={() => Menu(1)}
+            className={`py-10 px-8 flex flex-row justify-start items-center md:hidden ${
+              scrolled ? "hover:bg-blue-700" : "hover:bg-blue-700"
+            }`}
+          >
+            <img src="/images/Admisiones.png" alt="WhiteShield" className="w-7" />
             <span className="px-4">Admisión</span>
-            <img src= "/images/Arrow.png" alt="LogoWhite" className = "absolute w-[15px] right-5 Flecha"/>
+            <img src="/images/Arrow.png" alt="LogoWhite" className="absolute w-[15px] right-5 Flecha" />
           </button>
 
           {/*Contenedor que almacena el menu de opciones de admision, en vista de PC, se trabaja directamente con este contenedor*/}
-          <div className={`${open == 1 ? 'transition-all duration-300' : 'transition-all duration-300 translate-x-[-100%]'} z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black 
-          md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}>
-
+          <div
+            className={`${
+              open == 1
+                ? "transition-all duration-300"
+                : "transition-all duration-300 translate-x-[-100%]"
+            } z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black
+            md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}
+          >
             {/*Boton que cierra el menu desplegable (Oculto en vista de PC)*/}
             <div className="flex w-[100%] justify-end md:hidden">
               <button onClick={() => Menu(0)} className=" w-[70px] h-[50px] flex m-1 justify-center items-center">
@@ -75,19 +113,34 @@ export default function Navbar() {
             </div>
 
             {/*Link para la pagina de Admisiones*/}
-            <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 md:text-white hover:bg-gray-300 md:hover:bg-transparent">Admisión</Link>
+            <Link
+              href="/"
+              className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
+                scrolled ? "md:text-white hover:bg-blue-700" : "md:text-white md:hover:bg-transparent"
+              }`}
+            >
+              Admisión
+            </Link>
             <ul className="md:bg-white md:absolute md:text-black md:w-[300%] md:top-[130%] md:opacity-0 md:invisible md:group-hover:visible md:group-hover:opacity-100 transition-all duration-300 md:group-hover:-translate-y-3">
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Aranceles Institucionales</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Aranceles Institucionales
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Calendario Academico</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Calendario Academico
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Instructivo de Matricula</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Instructivo de Matricula
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Reglamentos</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Reglamentos
+                </Link>
               </li>
             </ul>
           </div>
@@ -95,18 +148,27 @@ export default function Navbar() {
 
         {/*Segunda opcion*/}
         <li className="flex flex-col">
-
           {/*Boton que despliega el menu de opciones de Oferta Academica (Oculto en vista de PC)*/}
-          <button onClick={() => Menu(2)} className="py-10 px-8 flex flex-row justify-start items-center md:hidden hover:bg-blue-700">
-            <img src= "/images/OfertaAcademica.png" alt="WhiteShield" className = "w-7"/>
+          <button
+            onClick={() => Menu(2)}
+            className={`py-10 px-8 flex flex-row justify-start items-center md:hidden ${
+              scrolled ? "hover:bg-blue-700" : "hover:bg-blue-700"
+            }`}
+          >
+            <img src="/images/OfertaAcademica.png" alt="WhiteShield" className="w-7" />
             <span className="px-4">Oferta Academica</span>
-            <img src= "/images/Arrow.png" alt="LogoWhite" className = "absolute w-[15px] right-5 Flecha"/>
+            <img src="/images/Arrow.png" alt="LogoWhite" className="absolute w-[15px] right-5 Flecha" />
           </button>
 
           {/*Contenedor que almacena el menu de opciones de Oferta Academica, en vista de PC, se trabaja directamente con este contenedor*/}
-          <div className={`${open == 2 ? 'transition-all duration-300' : 'transition-all duration-300 translate-x-[-100%]'} z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black
-          md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}>
-
+          <div
+            className={`${
+              open == 2
+                ? "transition-all duration-300"
+                : "transition-all duration-300 translate-x-[-100%]"
+            } z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black
+            md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}
+          >
             {/*Boton que cierra el menu desplegable (Oculto en vista de PC)*/}
             <div className="flex w-[100%] justify-end md:hidden">
               <button onClick={() => Menu(0)} className=" w-[70px] h-[50px] flex m-1 justify-center items-center">
@@ -116,22 +178,39 @@ export default function Navbar() {
             </div>
 
             {/*Link para la pagina de Oferta Academica*/}
-            <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 md:text-white hover:bg-gray-300 md:hover:bg-transparent">Oferta academica</Link>
+            <Link
+              href="/"
+              className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
+                scrolled ? "md:text-white hover:bg-blue-700" : "md:text-white md:hover:bg-transparent"
+              }`}
+            >
+              Oferta academica
+            </Link>
             <ul className="md:bg-white md:absolute md:text-black md:w-[300%] md:top-[130%] md:opacity-0 md:invisible md:group-hover:visible md:group-hover:opacity-100 transition-all duration-300 md:group-hover:-translate-y-3">
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Facultad de Ingenieria y Ciencias Naturales</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Facultad de Ingenieria y Ciencias Naturales
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Facultad de Economia y Ciencias Sociales</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Facultad de Economia y Ciencias Sociales
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Facultad de Ciencias Juridicas</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Facultad de Ciencias Juridicas
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Escuela de Educacion</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Escuela de Educacion
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Maestrias</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Maestrias
+                </Link>
               </li>
             </ul>
           </div>
@@ -139,18 +218,27 @@ export default function Navbar() {
 
         {/*Tercera opcion*/}
         <li className="flex flex-col">
-
           {/*Boton que despliega el menu de opciones de Institución (Oculto en vista de PC)*/}
-          <button onClick={() => Menu(3)} className="py-10 px-8 flex flex-row justify-start items-center md:hidden hover:bg-blue-700">
-            <img src= "/images/Institucion.png" alt="WhiteShield" className = "w-7"/>
+          <button
+            onClick={() => Menu(3)}
+            className={`py-10 px-8 flex flex-row justify-start items-center md:hidden ${
+              scrolled ? "hover:bg-blue-700" : "hover:bg-blue-700"
+            }`}
+          >
+            <img src="/images/Institucion.png" alt="WhiteShield" className="w-7" />
             <span className="px-4">Institución</span>
-            <img src= "/images/Arrow.png" alt="LogoWhite" className = "absolute w-[15px] right-5 Flecha"/>
+            <img src="/images/Arrow.png" alt="LogoWhite" className="absolute w-[15px] right-5 Flecha" />
           </button>
 
           {/*Contenedor que almacena el menu de opciones de Institución, en vista de PC, se trabaja directamente con este contenedor*/}
-          <div className={`${open == 3 ? 'transition-all duration-300' : 'transition-all duration-300 translate-x-[-100%]'} z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black 
-          md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}>
-
+          <div
+            className={`${
+              open == 3
+                ? "transition-all duration-300"
+                : "transition-all duration-300 translate-x-[-100%]"
+            } z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black
+            md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}
+          >
             {/*Boton que cierra el menu desplegable (Oculto en vista de PC)*/}
             <div className="flex w-[100%] justify-end md:hidden">
               <button onClick={() => Menu(0)} className=" w-[70px] h-[50px] flex m-1 justify-center items-center md:hidden">
@@ -160,33 +248,65 @@ export default function Navbar() {
             </div>
 
             {/*Link para la pagina de Institución*/}
-            <Link href="/nuestraInstitucion" className="py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 md:text-white hover:bg-gray-300 md:hover:bg-transparent">Institución</Link>
+            <Link
+              href="/nuestraInstitucion"
+              className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
+                scrolled ? "md:text-white hover:bg-blue-700" : "md:text-white md:hover:bg-transparent"
+              }`}
+            >
+              Institución
+            </Link>
             <ul className="md:bg-white md:absolute md:text-black md:w-[300%] md:top-[130%] md:opacity-0 md:invisible md:group-hover:visible md:group-hover:opacity-100 transition-all duration-300 md:group-hover:-translate-y-3">
               <li>
-                <Link href="/nuestraInstitucion/tourUSO" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Tour USO</Link>
+                <Link href="/nuestraInstitucion/tourUSO" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Tour USO
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Investigaciones USO</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Investigaciones USO
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Espacio USO</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Espacio USO
+                </Link>
               </li>
               <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">Unidades Academicas</Link>
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                  Unidades Academicas
+                </Link>
               </li>
             </ul>
           </div>
         </li>
         <li className="flex flex-col">
-          <Link href="/" className="py-10 px-8 flex justify-start items-center md:px-0 hover:bg-blue-700 md:hover:bg-transparent">
-          <img src= "/images/EducacionContinua.png" alt="WhiteShield" className = "w-7 h-7 md:hidden"/>
-          <span className="px-4">Educación Continua</span>
+          <Link
+            href="/"
+            className={`py-10 px-8 flex justify-start items-center md:px-0 ${
+              scrolled ? "md:text-white hover:bg-blue-700" : "md:hover:bg-blue-700 md:hover:bg-transparent"
+            }`}
+          >
+            <img
+              src="/images/EducacionContinua.png"
+              alt="WhiteShield"
+              className="w-7 h-7 md:hidden"
+            />
+            <span className="px-4">Educación Continua</span>
           </Link>
         </li>
         <li className="flex flex-col">
-          <Link href="/" className="py-10 px-8 flex justify-start items-center md:px-0 hover:bg-blue-700 md:hover:bg-transparent">
-          <img src= "/images/DireccionCPS.png" alt="DireccionIcon" className = "w-7 h-7 md:hidden"/>
-          <span className="px-4">Dirección de Calidad, Investigación y Proyección Social</span>
+          <Link
+            href="/"
+            className={`py-10 px-8 flex justify-start items-center md:px-0 ${
+              scrolled ? "md:text-white hover:bg-blue-600" : "md:hover:bg-blue-600 md:hover:bg-transparent"
+            }`}
+          >
+            <img
+              src="/images/DireccionCPS.png"
+              alt="DireccionIcon"
+              className="w-7 h-7 md:hidden"
+            /><span className="px-4">Dirección de Calidad, Investigación y Proyección Social</span>
           </Link>
         </li>
       </ul>
