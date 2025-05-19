@@ -14,10 +14,10 @@ export default function Navbar() {
   const navBar = () => {
     setNavOpen(!navOpen);
   };
-
+ 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) { // Ajusta este valor según necesites
+      if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);

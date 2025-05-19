@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import SocialButtons from "./SocialButtons"; // Importa el componente de botones sociales
 const videos = [
     {
         src: "/videos/video1.mp4",
@@ -94,6 +94,8 @@ export default function Hero() {
         >
             &#8594;
         </button>
+        <SocialButtons/>
+
         </section>
     );
 }
