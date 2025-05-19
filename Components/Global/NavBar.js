@@ -34,14 +34,14 @@ export default function Navbar() {
     <nav
       className={`fixed w-full z-50 h-[10vh] top-[4vh] flex items-center justify-between font-semibold font-sans text-white transition-colors duration-300 ${
         scrolled
-          ? "bg-blue-700 text-white shadow-md" // Fondo azul y texto blanco al hacer scroll
+          ? "bg-white text-white shadow-md" // Fondo azul y texto blanco al hacer scroll
           : "bg-gradient-to-b from-[#0307096b] to-[#9f9f9f00]" // Clases para cuando está en la parte superior
       }`}
     >
       {/*Logo de la universidad blanco (Izquierda de la navbar)*/}
       <Link href="/" className="px-3">
         <img
-          src={scrolled ? "/images/LogoWhite.png" : "/images/LogoWhite.png"} // Mantengo el logo blanco en ambos estados por ahora
+          src={scrolled ? "/images/UsoLOGO.png" : "/images/UsoLOGO.png"} // Mantengo el logo blanco en ambos estados por ahora
           alt={scrolled ? "LogoWhite" : "LogoWhite"}
           className="w-32"
         />
@@ -54,19 +54,19 @@ export default function Navbar() {
             navOpen
               ? "transition-all duration-200 rotate-45 translate-y-[9.5px]"
               : "transition-all duration-200"
-          } h-[2px] w-[30px] ${scrolled ? 'bg-white' : 'bg-white'}`} // Mantengo el icono blanco
+          } h-[2px] w-[30px] ${scrolled ? 'bg-black' : 'bg-white'}`} // Mantengo el icono blanco
         ></div>
         <div
           className={`${
             navOpen ? "transition-all duration-200 opacity-0" : "transition-all duration-200"
-          } h-[2px] w-[30px] ${scrolled ? 'bg-white' : 'bg-white'}`} // Mantengo el icono blanco
+          } h-[2px] w-[30px] ${scrolled ? 'bg-black' : 'bg-white'}`} // Mantengo el icono blanco
         ></div>
         <div
           className={`${
             navOpen
               ? "transition-all duration-200 -rotate-45 -translate-y-[9.5px]"
               : "transition-all duration-200"
-          } h-[2px] w-[30px] ${scrolled ? 'bg-white' : 'bg-white'}`} // Mantengo el icono blanco
+          } h-[2px] w-[30px] ${scrolled ? 'bg-black' : 'bg-white'}`} // Mantengo el icono blanco
         ></div>
       </button>
 
@@ -116,7 +116,7 @@ export default function Navbar() {
             <Link
               href="/"
               className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
-                scrolled ? "md:text-white hover:bg-blue-700" : "md:text-white md:hover:bg-transparent"
+                scrolled ? "md:text-black" : "md:text-white md:hover:bg-transparent"
               }`}
             >
               Admisión
@@ -181,7 +181,7 @@ export default function Navbar() {
             <Link
               href="/"
               className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
-                scrolled ? "md:text-white hover:bg-blue-700" : "md:text-white md:hover:bg-transparent"
+                scrolled ? "md:text-black" : "md:text-white md:hover:bg-transparent"
               }`}
             >
               Oferta academica
@@ -251,7 +251,7 @@ export default function Navbar() {
             <Link
               href="/nuestraInstitucion"
               className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
-                scrolled ? "md:text-white hover:bg-blue-700" : "md:text-white md:hover:bg-transparent"
+                scrolled ? "md:text-black1" : "md:text-white md:hover:bg-transparent"
               }`}
             >
               Institución
@@ -284,7 +284,7 @@ export default function Navbar() {
           <Link
             href="/"
             className={`py-10 px-8 flex justify-start items-center md:px-0 ${
-              scrolled ? "md:text-white hover:bg-blue-700" : "md:hover:bg-blue-700 md:hover:bg-transparent"
+              scrolled ? "md:text-black" : "md:hover:bg-blue-700 md:hover:bg-transparent"
             }`}
           >
             <img
@@ -299,7 +299,7 @@ export default function Navbar() {
           <Link
             href="/"
             className={`py-10 px-8 flex justify-start items-center md:px-0 ${
-              scrolled ? "md:text-white hover:bg-blue-600" : "md:hover:bg-blue-600 md:hover:bg-transparent"
+              scrolled ? "md:text-black" : "md:hover:bg-blue-600 md:hover:bg-transparent"
             }`}
           >
             <img
