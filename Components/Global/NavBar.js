@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from 'next/image'; // Import the Image component
 
 export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
@@ -14,7 +15,7 @@ export default function Navbar() {
   const navBar = () => {
     setNavOpen(!navOpen);
   };
- 
+
   React.useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -38,13 +39,25 @@ export default function Navbar() {
           : "bg-gradient-to-b from-[#0307096b] to-[#9f9f9f00]" // Clases para cuando está en la parte superior
       }`}
     >
-      {/*Logo de la universidad blanco (Izquierda de la navbar)*/}
+      {/*Logo de la universidad (Izquierda de la navbar)*/}
       <Link href="/" className="px-3">
-        <img
-          src={scrolled ? "/images/UsoLOGO.png" : "/images/UsoLOGO.png"} // Mantengo el logo blanco en ambos estados por ahora
-          alt={scrolled ? "LogoWhite" : "LogoWhite"}
-          className="w-32"
-        />
+        {scrolled ? (
+          <Image
+            src="/images/UsoLOGO.png" // Path to your colored logo
+            alt="Uso LOGO"
+            width={128} // Adjust as needed
+            height={40}  // Adjust as needed
+            className="transition-opacity duration-300"
+          />
+        ) : (
+          <Image
+            src="/images/LogoWhite.png"   // Path to your gray logo
+            alt="Logo White"
+            width={128} // Adjust as needed
+            height={40}  // Adjust as needed
+            className="transition-opacity duration-300"
+          />
+        )}
       </Link>
 
       {/*Menu de hamburguesa (Oculta en vista de PC)*/}
@@ -301,8 +314,7 @@ export default function Navbar() {
             className={`py-10 px-8 flex justify-start items-center md:px-0 ${
               scrolled ? "md:text-black" : "md:hover:bg-blue-600 md:hover:bg-transparent"
             }`}
-          >
-            <img
+          ><img
               src="/images/DireccionCPS.png"
               alt="DireccionIcon"
               className="w-7 h-7 md:hidden"
