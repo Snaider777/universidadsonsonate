@@ -2,8 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from 'next/image'; // Import the Image component
-
+import Image from 'next/image'; // importar el componente Image de Next.js
 export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
   const [navOpen, setNavOpen] = React.useState(false);
@@ -43,18 +42,18 @@ export default function Navbar() {
       <Link href="/" className="px-3">
         {scrolled ? (
           <Image
-            src="/images/UsoLOGO.png" // Path to your colored logo
+            src="/images/UsoLOGO.png" // Direccion a la imagen del logo
             alt="Uso LOGO"
-            width={128} // Adjust as needed
-            height={40}  // Adjust as needed
+            width={128} // ajustar según sea necesario
+            height={40}  // ajustar según sea necesario
             className="transition-opacity duration-300"
           />
         ) : (
           <Image
-            src="/images/LogoWhite.png"   // Path to your gray logo
+            src="/images/LogoWhite.png"   // Direccion a la imagen del logo
             alt="Logo White"
-            width={128} // Adjust as needed
-            height={40}  // Adjust as needed
+            width={128} // ajustar según sea necesario
+            height={40}  //ajustar según sea necesario
             className="transition-opacity duration-300"
           />
         )}
