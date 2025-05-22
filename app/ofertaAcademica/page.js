@@ -1,12 +1,10 @@
-import Hero from '../Components/Locale/index/Hero'
-import InicioOferta from '../Components/Locale/ofertaAcademica/'
-import "../styles/animations.css"
+import InicioOferta from '@/Components/Locale/OfertaAcademica/InicioOferta'
 
-export default function Home() {
+
+export default function ofertaAcademica() {
   return (
     <>
-        <Hero />
-        <InicioOferta/>
+      <InicioOferta />
     </>
   )
 }
