@@ -1,4 +1,4 @@
-import InicioOferta from "@/Components/Locale/ofertaAcademica/InicioOferta"
+import InicioOferta from "@/Components/Locale/OfertaAcademica/InicioOferta"
 import MisionVisionHistoriaSection from "@/Components/Locale/nuestraInstitucion/MisionVisionHistoriaSection"
 import Hero from "@/Components/Locale/index/Hero"
 export default function NuestraIntitucion(){

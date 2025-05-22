@@ -200,7 +200,7 @@ export default function Navbar() {
             </Link>
             <ul className="md:bg-white md:absolute md:text-black md:w-[300%] md:top-[130%] md:opacity-0 md:invisible md:group-hover:visible md:group-hover:opacity-100 transition-all duration-300 md:group-hover:-translate-y-3">
               <li>
-                <Link href="//" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
+                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
                   Facultad de Ingenieria y Ciencias Naturales
                 </Link>
               </li>
