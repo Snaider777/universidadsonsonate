@@ -82,7 +82,7 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Botones de navegación */}
-        <button
+      {/*  <button
             onClick={handlePrev}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10"
         >
@@ -93,7 +93,8 @@ export default function Hero() {
             className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10"
         >
             &#8594;
-        </button>
+        </button> */}
+        
         <SocialButtons/>
 
         </section>
