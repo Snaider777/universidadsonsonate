@@ -82,6 +82,20 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Botones de navegación */}
+        <button
+            onClick={handlePrev}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10 hover:bg-opacity-80 transition"
+            aria-label="Anterior"
+        >
+            &#8592;
+        </button>
+        <button
+            onClick={handleNext}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10 hover:bg-opacity-80 transition"
+            aria-label="Siguiente"
+        >
+            &#8594;
+        </button>
       {/*  <button
             onClick={handlePrev}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10"
@@ -94,7 +108,8 @@ export default function Hero() {
         >
             &#8594;
         </button> */}
-        
+
+        {/* Botones de redes sociales */}
         <SocialButtons/>
 
         </section>
