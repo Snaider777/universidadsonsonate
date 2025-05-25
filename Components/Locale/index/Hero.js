@@ -13,14 +13,14 @@ const videos = [
         redirectUrl: "/oferta",
     },
     {
-        src: "/videos/video2.mp4",
+        src: "/videos/fut.mp4",
         Titulo: "Innovación en Educación",
         Subtitulo:"Nuestro compromiso es brindarte una formación actualizada y de calidad.",
         boton: "Descubrir",
         redirectUrl: "/oferta/innovacion",
     },
     {
-        src: "/videos/video3.mp4",
+        src: "/videos/bb.mp4",
         Titulo: "Calidad y Excelencia",
         Subtitulo:"Apostamos por la excelencia y por tu crecimiento profesional.",
         boton: "Explorar",
