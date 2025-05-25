@@ -20,7 +20,7 @@ const videos = [
         redirectUrl: "/oferta/innovacion",
     },
     {
-        src: "/videos/bb.mp4",
+        src: "/videos/twd.mp4",
         Titulo: "Calidad y Excelencia",
         Subtitulo:"Apostamos por la excelencia y por tu crecimiento profesional.",
         boton: "Explorar",
