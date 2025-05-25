@@ -12,14 +12,14 @@ const videos = [
         redirectUrl: "/oferta",
     },
     {
-        src: "/videos/video1.mp4",
+        src: "/videos/video2.mp4",
         Titulo: "Innovación en Educación",
         Subtitulo:"Nuestro compromiso es brindarte una formación actualizada y de calidad.",
         boton: "Descubrir",
         redirectUrl: "/oferta/innovacion",
     },
     {
-        src: "/videos/video1.mp4",
+        src: "/videos/video3.mp4",
         Titulo: "Calidad y Excelencia",
         Subtitulo:"Apostamos por la excelencia y por tu crecimiento profesional.",
         boton: "Explorar",
@@ -81,35 +81,22 @@ export default function Hero() {
             </motion.div>
         </AnimatePresence>
 
-        {/* Botones de navegación */}
-        <button
-            onClick={handlePrev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10 hover:bg-opacity-80 transition"
-            aria-label="Anterior"
-        >
-            &#8592;
-        </button>
-        <button
-            onClick={handleNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10 hover:bg-opacity-80 transition"
-            aria-label="Siguiente"
-        >
-            &#8594;
-        </button>
-      {/*  <button
-            onClick={handlePrev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10"
-        >
-            &#8592;
-        </button>
-        <button
-            onClick={handleNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-3 rounded-full z-10"
-        >
-            &#8594;
-        </button> */}
-
-        {/* Botones de redes sociales */}
+        {/* Comentado para evitar conflictos visuales con los botones de navegación */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-20">
+            {videos.map((_, idx) => (
+                <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    aria-label={`Ir al slide ${idx + 1}`}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 border-2 ${
+                        idx === currentIndex
+                            ? "bg-blue-500 border-blue-500 scale-125"
+                            : "bg-white bg-opacity-60 border-white hover:bg-blue-400"
+                    }`}
+                    style={{ outline: "none" }}
+                />
+            ))}
+        </div>
         <SocialButtons/>
 
         </section>
