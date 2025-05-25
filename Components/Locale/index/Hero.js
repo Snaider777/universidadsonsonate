@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SocialButtons from "./SocialButtons"; // Importa el componente de botones sociales
+import { useRef } from "react";
 const videos = [
     {
         src: "/videos/video1.mp4",
@@ -26,6 +27,8 @@ const videos = [
         redirectUrl: "/oferta/calidad",
     },
 ];
+
+// Hook para manejar el avance automático al terminar el video
 
 export default function Hero() {
     const [currentIndex, setCurrentIndex] = useState(0);

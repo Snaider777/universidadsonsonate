@@ -191,7 +191,7 @@ export default function Navbar() {
 
             {/*Link para la pagina de Oferta Academica*/}
             <Link
-              href="/ofertaAcademica"
+              href="/ofertaAcademica/fics"
               className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
                 scrolled ? "md:text-black" : "md:text-white md:hover:bg-transparent"
               }`}
