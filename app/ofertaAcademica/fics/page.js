@@ -1,169 +1,193 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 
-// Datos de facultades
-const facultades = [
+// Datos de facultades con un nuevo campo 'type' y 'bgColor' para el estilo
+
+const ofertasAcademicas = [
   {
-    nombre: "Ingeniería en Sistemas",
+    nombre: "La Carrera de Ingeniería en Sistemas de Computación",
     descripcion:
-      "Forma parte del futuro tecnológico con nuestra carrera de Ingeniería en Sistemas.",
-    imagen: "/images/img-inicio-2.png",
+      "es una disciplina que combina los principios de la ingeniería con los fundamentos de la informática para diseñar, desarrollar y gestionar sistemas informáticos complejos.",
+    imagen: "https://zimbronapps.com/wp-content/uploads/2019/09/Ing_sistemas.jpg", // Asegúrate de tener imágenes relevantes
     categoria: "Facultad de Ingenieria y Ciencias Naturales",
     href: "/oferta/ingenieria-sistemas",
+    type: "large-image", // Nuevo tipo para la tarjeta grande con imagen
+    textColor: "text-white",
   },
   {
-    nombre: "Ingeniería Electrica",
-    descripcion:
-      "Forma parte del futuro tecnológico con nuestra carrera de Ingeniería en Sistemas.",
-    imagen: "/images/img-inicio-2.png",
-    categoria: "Facultad de Ingenieria y Ciencias Naturales",
-    href: "/oferta/ingenieria-sistemas",
+    nombre: "Impulsamos la modernización de espacios para el aprendizaje.",
+    descripcion: "Descubre nuestro campus",
+    imagen: "", // No imagen para este tipo
+    categoria: "",
+    href: "/oferta/campus",
+    type: "colored-text", // Nuevo tipo para la tarjeta de color sólido
+    bgColor: "bg-yellow-400", // Color de fondo específico
+    textColor: "text-black",
   },
   {
-    nombre: "Ingeniería en Agronegocios",
+    nombre: "Ingenieria en Agronegocios",
     descripcion:
-      "Forma parte del futuro tecnológico con nuestra carrera de Ingeniería en Sistemas.",
-    imagen: "/images/img-inicio-2.png",
+      "La ingeniería en Agronegocios combina la ciencia agrícola con la gestión empresarial para optimizar la producción y comercialización de productos agrícolas.",
+    imagen: "https://buzznigeria.com/wp-content/uploads/2017/12/Farmcrowdy.jpg", 
+    categoria: "",
+    href: "/oferta/historia",
+    type: "small-image", // Tipo para la imagen pequeña
+    textColor: "text-white",
+  },
+  {
+    nombre: "Ingenieria Electrica",
+    descripcion: "La ingeniería eléctrica se centra en el estudio y aplicación de la electricidad, la electrónica y el electromagnetismo para diseñar y desarrollar sistemas eléctricos.",
+    imagen: "https://th.bing.com/th/id/OIP.KRbpUYbg2MRwPX4_KHaGJgHaDt?w=332&h=174&c=7&r=0&o=5&pid=1.7", // Imagen relevante
+    categoria: "",
+    href: "/oferta/manifiesto",
+    type: "small-image",
+    textColor: "text-white",
+  },
+  {
+    nombre: "Vinculación con la empresa para acelerar el conocimiento.",
+    descripcion: "Descubre porqué la industria es nuestro aliado.",
+    imagen: "/images/vinculacion-empresa.jpg", // Imagen relevante
+    categoria: "",
+    href: "/oferta/vinculacion",
+    type: "small-image",
+    textColor: "text-white",
+  },
+  {
+    nombre: "La ingeniería es aprender jugando, explorando y cuestionando.",
+    descripcion: "Descubre nuestras carreras.",
+    imagen: "", // No imagen
     categoria: "Facultad de Ingenieria y Ciencias Naturales",
-    href: "/oferta/ingenieria-sistemas",
+    href: "/oferta/carreras",
+    type: "colored-text",
+    bgColor: "bg-blue-600", // Color de fondo específico
+    textColor: "text-white",
+  },
+  {
+    nombre: "Creemos que aprender no debería de tener límites.",
+    descripcion: "Descubre nuestras becas.",
+    imagen: "", // No imagen
+    categoria: "",
+    href: "/oferta/becas",
+    type: "colored-text",
+    bgColor: "bg-purple-600", // Color de fondo específico
+    textColor: "text-white",
+  },
+  // Puedes añadir más elementos aquí siguiendo el mismo patrón
+  {
+    nombre: "Técnico en Logística y Aduanas",
+    descripcion:
+      "Domina las finanzas y la gestión contable con nuestra carrera de Contabilidad.",
+    imagen: "https://thelogisticsworld.com/wp-content/uploads/2023/04/Tipos-de-Aduanas-2.jpg",
+    categoria: "Tecnicos",
+    href: "/oferta/contabilidad",
+    type: "small-image",
+    textColor: "text-white",
   },
   {
     nombre: "Ingeniería Industrial",
     descripcion:
       "Forma parte del futuro tecnológico con nuestra carrera de Ingeniería en Sistemas.",
-    imagen: "/images/img-inicio-2.png",
+    imagen: "https://th.bing.com/th/id/OIP.s4q4SDiAfvyrt-ufGTpJvwHaEK?w=311&h=180&c=7&r=0&o=5&pid=1.7",
     categoria: "Facultad de Ingenieria y Ciencias Naturales",
-    href: "/oferta/ingenieria-sistemas",
-  },
-  {
-    nombre: "Técnico en Logística y Aduanas",
-    descripcion:
-      "Domina las finanzas y la gestión contable con nuestra carrera de Contabilidad.",
-    imagen: "/images/img-inicio-2.png",
-    categoria: "Tecnicos",
-    href: "/oferta/contabilidad",
-  },
-  {
-    nombre: "Técnico en Mantenimiento Informático",
-    descripcion:
-      "Domina las finanzas y la gestión contable con nuestra carrera de Contabilidad.",
-    imagen: "/images/img-inicio-2.png",
-    categoria: "Tecnicos",
-    href: "/oferta/contabilidad",
+    href: "/oferta/ingenieria-industrial",
+    type: "small-image",
+    textColor: "text-white",
   },
   {
     nombre: "Técnico Superior en Ciencia de Datos",
     descripcion:
       "Domina las finanzas y la gestión contable con nuestra carrera de Contabilidad.",
-    imagen: "/images/img-inicio-2.png",
+    imagen: "https://th.bing.com/th/id/OIP.FMvBDoSKPl55TBG1e_G6PAHaEo?rs=1&pid=ImgDetMain",
     categoria: "Tecnicos",
-    href: "/oferta/contabilidad",
+    href: "/oferta/tecnico-ciencia-datos",
+    type: "small-image",
+    textColor: "text-white",
   },
 ];
 
-/*
-  Función para dividir un arreglo en grupos de tamaño chunkSize.
-*/
-function chunkArray(array, chunkSize) {
-  const result = [];
-  for (let i = 0; i < array.length; i += chunkSize) {
-    result.push(array.slice(i, i + chunkSize));
-  }
-  return result;
-}
+// Nuevo componente para las tarjetas individuales
+function OfferCard({ item }) {
+  const commonProps = {
+    whileHover: { scale: 1.02 },
+    transition: { duration: 0.3 },
+    className: `relative rounded-lg overflow-hidden flex flex-col justify-end p-4 ${item.textColor}`,
+  };
 
-/*
-  Componente que muestra un contenedor de 5 imágenes:
-  - La primera se muestra en grande (con tamaño ajustado).
-  - Las otras 4 se organizan en una cuadrícula de 2 columnas.
-*/
-function OfferContainer({ items, containerIndex }) {
-  if (!items || items.length === 0) return null;
-  const isEven = containerIndex % 2 === 0;
-  const bigImage = (
-    <motion.a
-      href={items[0].href}
-      className="relative block rounded-lg overflow-hidden h-[300px] md:w-1/2"
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3 }}
-    >
-      <img
-        src={items[0].imagen}
-        alt={items[0].nombre}
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-4">
-        <h3 className="text-xl font-bold text-white">{items[0].nombre}</h3>
-        <p className="text-sm text-gray-200">{items[0].descripcion}</p>
-      </div>
-    </motion.a>
-  );
-  const smallImages = (
-    <div className="grid grid-cols-2 gap-4 md:w-1/2">
-      {items.slice(1).map((item, idx) => (
-        <motion.a
-          key={item.nombre + idx}
-          href={item.href}
-          className="relative block rounded-lg overflow-hidden h-[140px]"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-        >
-          <img
-            src={item.imagen}
-            alt={item.nombre}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-2">
-            <h3 className="text-sm font-bold text-white">{item.nombre}</h3>
-            <p className="text-xs text-gray-200">{item.descripcion}</p>
+  if (item.type === "large-image") {
+    return (
+      <motion.a
+        href={item.href}
+        {...commonProps}
+        className={`${commonProps.className} md:col-span-2 md:row-span-2 h-[400px]`} // Ocupa 2 columnas y 2 filas
+      >
+        <img
+          src={item.imagen}
+          alt={item.nombre}
+          className="absolute inset-0 w-full h-full object-cover grayscale" // Imagen en blanco y negro
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div> {/* Overlay oscuro */}
+        <div className="relative z-10">
+          <h3 className="text-2xl font-bold mb-2">{item.nombre}</h3>
+          <p className="text-base">{item.descripcion}</p>
+        </div>
+      </motion.a>
+    );
+  } else if (item.type === "colored-text") {
+    return (
+      <motion.a
+        href={item.href}
+        {...commonProps}
+        className={`${commonProps.className} ${item.bgColor} h-[180px] md:h-[200px]`}
+      >
+        <div className="flex flex-col justify-between h-full">
+          <p className="text-lg font-semibold">{item.nombre}</p>
+          <div className="flex justify-between items-center mt-2">
+            <span className="text-sm font-medium">{item.descripcion}</span>
+            <span className="text-2xl">→</span> {/* Flecha */}
           </div>
-        </motion.a>
-      ))}
-    </div>
-  );
+        </div>
+      </motion.a>
+    );
+  } else if (item.type === "small-image") {
+    return (
+      <motion.a
+        href={item.href}
+        {...commonProps}
+        className={`${commonProps.className} h-[180px] md:h-[200px]`}
+      >
+        <img
+          src={item.imagen}
+          alt={item.nombre}
+          className="absolute inset-0 w-full h-full object-cover grayscale" // Imagen en blanco y negro
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div> {/* Overlay oscuro */}
+        <div className="relative z-10 flex flex-col justify-between h-full">
+          <h3 className="text-lg font-semibold">{item.nombre}</h3>
+          <div className="flex justify-between items-center mt-2">
+            <p className="text-sm">{item.descripcion}</p>
+            <span className="text-xl">→</span> {/* Flecha */}
+          </div>
+        </div>
+      </motion.a>
+    );
+  }
 
-  return (
-    <motion.div
-      className="mb-8"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="flex flex-col md:flex-row gap-4">
-        {isEven ? (
-          <>
-            {bigImage}
-            {smallImages}
-          </>
-        ) : (
-          <>
-            {smallImages}
-            {bigImage}
-          </>
-        )}
-      </div>
-    </motion.div>
-  );
+  return null; // En caso de tipo desconocido
 }
 
 export default function SlideOfertaAcademica() {
-  // Ahora, 'chunkedItems' usará directamente el array 'facultades'
-  // ya que no hay filtro que aplicar.
-  const chunkedItems = chunkArray(facultades, 5);
-
   return (
-    <section className="py-12 bg-[#1f3d7a]">
-      <div className="max-w-7xl mx-auto px-4 text-white">
-        <h2 className="text-3xl font-bold text-center mb-8">Oferta Académica</h2>
+    <section className="py-12 bg-white text-gray-800"> {/* Fondo blanco y texto oscuro como en la imagen */}
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-12">Oferta Académica</h2> {/* Ajuste de tamaño y margen */}
 
-        <AnimatePresence exitBeforeEnter>
-          {chunkedItems.map((group, index) => (
-            <OfferContainer key={index} items={group} containerIndex={index} />
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4"> {/* Ajuste de grid para más columnas */}
+          {ofertasAcademicas.map((item, index) => (
+            <OfferCard key={index} item={item} />
           ))}
-        </AnimatePresence>
+        </div>
       </div>
     </section>
   );
