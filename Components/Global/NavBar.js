@@ -40,24 +40,13 @@ export default function Navbar() {
     >
       {/*Logo de la universidad (Izquierda de la navbar)*/}
       <Link href="/" className="px-3">
-        {scrolled ? (
-          <Image
-            src="/images/UsoLOGO.png" // Direccion a la imagen del logo
-            alt="Uso LOGO"
-            width={128} // ajustar según sea necesario
-            height={40}  // ajustar según sea necesario
-            className="transition-opacity duration-300"
-          />
-        ) : (
-          <Image
-            src="/images/LogoWhite.png"   // Direccion a la imagen del logo
-            alt="Logo White"
-            width={128} // ajustar según sea necesario
-            height={40}  //ajustar según sea necesario
-            className="transition-opacity duration-300"
-          />
-        )}
-      </Link>
+  <Image
+    src="/images/UsoLOGO.png" // Direccion a la imagen del logo
+    alt="Uso LOGO"
+    width={128} // ajustar según sea necesario
+    height={40}  // ajustar según sea necesario
+  />
+</Link>
 
       {/*Menu de hamburguesa (Oculta en vista de PC)*/}
       <button onClick={() => navBar()} className="px-4 flex flex-col gap-2 md:hidden">
