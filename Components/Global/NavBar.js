@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { FaBalanceScale, FaCogs, FaUniversity, FaChalkboardTeacher, FaGraduationCap, FaChevronDown } from "react-icons/fa";
-
+import { FaMoneyBillWave, FaCalendarAlt, FaBookOpen, FaGavel, FaMapMarkedAlt, FaSearch, FaBuilding, FaUsers } from "react-icons/fa";
 import Image from 'next/image'; // importar el componente Image de Next.js
 export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
@@ -84,71 +84,60 @@ export default function Navbar() {
         }
         md:translate-x-[0] md:static md:flex-row md:h-auto md:w-auto md:gap-4 md:bg-transparent md:items-center`}
       >
-        {/*Primera opcion*/}
-        <li className="flex flex-col">
-          {/*Boton que despliega el menu de opciones de admision (Oculto en vista de PC)*/}
-          <button
-            onClick={() => Menu(1)}
-            className={`py-10 px-8 flex flex-row justify-start items-center md:hidden ${
-              scrolled ? "hover:bg-blue-700" : "hover:bg-blue-700"
-            }`}
-          >
-            <img src="/images/Admisiones.png" alt="WhiteShield" className="w-7" />
-            <span className="px-4">Admisión</span>
-            <img src="/images/Arrow.png" alt="LogoWhite" className="absolute w-[15px] right-5 Flecha" />
-          </button>
-
-          {/*Contenedor que almacena el menu de opciones de admision, en vista de PC, se trabaja directamente con este contenedor*/}
-          <div
-            className={`${
-              open == 1
-                ? "transition-all duration-300"
-                : "transition-all duration-300 translate-x-[-100%]"
-            } z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black
-            md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}
-          >
-            {/*Boton que cierra el menu desplegable (Oculto en vista de PC)*/}
-            <div className="flex w-[100%] justify-end md:hidden">
-              <button onClick={() => Menu(0)} className=" w-[70px] h-[50px] flex m-1 justify-center items-center">
-                <div className="absolute w-[35px] h-[3px] bg-black rotate-45"></div>
-                <div className="absolute w-[35px] h-[3px] bg-black -rotate-45"></div>
-              </button>
-            </div>
-
-            {/*Link para la pagina de Admisiones*/}
-            <Link
-              href="/"
-              className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
-                scrolled ? "md:text-black" : "md:text-white md:hover:bg-transparent"
-              }`}
-            >
-              Admisión
-            </Link>
-            <ul className="md:bg-white md:absolute md:text-black md:w-[300%] md:top-[130%] md:opacity-0 md:invisible md:group-hover:visible md:group-hover:opacity-100 transition-all duration-300 md:group-hover:-translate-y-3">
-              <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Aranceles Institucionales
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Calendario Academico
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Instructivo de Matricula
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Reglamentos
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </li>
-
+       {/* Primera opción: Admisión */}
+<li className="flex flex-col relative">
+  <div className="flex items-center w-full py-10 px-8 md:py-2 md:px-4">
+    <img src="/images/Admisiones.png" alt="Admisiones" className="w-7" />
+    <Link
+      href="/admisiones"
+      className="px-4 font-semibold"
+      style={{ flex: 1 }}
+    >
+      Admisión
+    </Link>
+    <button
+      onClick={() => Menu(1)}
+      aria-expanded={open === 1}
+      aria-controls="admisiones-menu"
+      className="ml-2 flex items-center justify-center"
+      style={{ width: 32, height: 32 }}
+    >
+      <FaChevronDown
+        className={`transition-transform duration-200 ${open === 1 ? "rotate-180" : ""}`}
+        size={24}
+        color="white"
+      />
+    </button>
+  </div>
+  {open === 1 && (
+    <ul
+  id="admisiones-menu"
+  className="md:bg-white md:absolute md:text-black md:w-[400px] md:top-[100%] md:left-1/2 md:-translate-x-1/2 shadow-lg flex flex-col gap-2 p-6 z-50 bg-white"
+>
+  <li>
+    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
+      <FaMoneyBillWave className="text-blue-700" /> Aranceles Institucionales
+    </Link>
+  </li>
+  <li>
+    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
+      <FaCalendarAlt className="text-blue-700" /> Calendario Académico
+    </Link>
+  </li>
+  <li>
+    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
+      <FaBookOpen className="text-blue-700" /> Instructivo de Matrícula
+    </Link>
+  </li>
+  <li>
+    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
+      <FaGavel className="text-blue-700" /> Reglamentos
+    </Link>
+  </li>
+</ul>
+  )}
+</li>
+{/*Segunda opcion*/}
      <li className="flex flex-col relative">
   <div className="flex items-center w-full py-10 px-8 md:py-2 md:px-4">
     <img src="/images/OfertaAcademica.png" alt="OfertaAcademica" className="w-7" />
@@ -221,70 +210,59 @@ export default function Navbar() {
     </ul>
   )}
 </li>
-        {/*Tercera opcion*/}
-        <li className="flex flex-col">
-          {/*Boton que despliega el menu de opciones de Institución (Oculto en vista de PC)*/}
-          <button
-            onClick={() => Menu(3)}
-            className={`py-10 px-8 flex flex-row justify-start items-center md:hidden ${
-              scrolled ? "hover:bg-blue-700" : "hover:bg-blue-700"
-            }`}
-          >
-            <img src="/images/Institucion.png" alt="WhiteShield" className="w-7" />
-            <span className="px-4">Institución</span>
-            <img src="/images/Arrow.png" alt="LogoWhite" className="absolute w-[15px] right-5 Flecha" />
-          </button>
-
-          {/*Contenedor que almacena el menu de opciones de Institución, en vista de PC, se trabaja directamente con este contenedor*/}
-          <div
-            className={`${
-              open == 3
-                ? "transition-all duration-300"
-                : "transition-all duration-300 translate-x-[-100%]"
-            } z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black
-            md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}
-          >
-            {/*Boton que cierra el menu desplegable (Oculto en vista de PC)*/}
-            <div className="flex w-[100%] justify-end md:hidden">
-              <button onClick={() => Menu(0)} className=" w-[70px] h-[50px] flex m-1 justify-center items-center md:hidden">
-                <div className="absolute w-[35px] h-[3px] bg-black rotate-45"></div>
-                <div className="absolute w-[35px] h-[3px] bg-black -rotate-45"></div>
-              </button>
-            </div>
-
-            {/*Link para la pagina de Institución*/}
-            <Link
-              href="/nuestraInstitucion"
-              className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
-                scrolled ? "md:text-black1" : "md:text-white md:hover:bg-transparent"
-              }`}
-            >
-              Institución
-            </Link>
-            <ul className="md:bg-white md:absolute md:text-black md:w-[300%] md:top-[130%] md:opacity-0 md:invisible md:group-hover:visible md:group-hover:opacity-100 transition-all duration-300 md:group-hover:-translate-y-3">
-              <li>
-                <Link href="/nuestraInstitucion/tourUSO" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Tour USO
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Investigaciones USO
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Espacio USO
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Unidades Academicas
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </li>
+        {/* Tercera opción: Institución */}
+<li className="flex flex-col relative">
+  <div className="flex items-center w-full py-10 px-8 md:py-2 md:px-4">
+    <img src="/images/Institucion.png" alt="Institucion" className="w-7" />
+    <Link
+      href="/nuestraInstitucion"
+      className="px-4 font-semibold"
+      style={{ flex: 1 }}
+    >
+      Institución
+    </Link>
+    <button
+      onClick={() => Menu(3)}
+      aria-expanded={open === 3}
+      aria-controls="institucion-menu"
+      className="ml-2 flex items-center justify-center"
+      style={{ width: 32, height: 32 }}
+    >
+      <FaChevronDown
+        className={`transition-transform duration-200 ${open === 3 ? "rotate-180" : ""}`}
+        size={24}
+        color="white"
+      />
+    </button>
+  </div>
+  {open === 3 && (
+    <ul
+  id="institucion-menu"
+  className="md:bg-white md:absolute md:text-black md:w-[400px] md:top-[100%] md:left-1/2 md:-translate-x-1/2 shadow-lg flex flex-col gap-2 p-6 z-50 bg-white"
+>
+  <li>
+    <Link href="/nuestraInstitucion/tourUSO" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
+      <FaMapMarkedAlt className="text-blue-700" /> Tour USO
+    </Link>
+  </li>
+  <li>
+    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
+      <FaSearch className="text-blue-700" /> Investigaciones USO
+    </Link>
+  </li>
+  <li>
+    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
+      <FaBuilding className="text-blue-700" /> Espacio USO
+    </Link>
+  </li>
+  <li>
+    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
+      <FaUsers className="text-blue-700" /> Unidades Académicas
+    </Link>
+  </li>
+</ul>
+  )}
+</li>
         <li className="flex flex-col">
           <Link
             href="/"
