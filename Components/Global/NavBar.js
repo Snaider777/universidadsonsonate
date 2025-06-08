@@ -2,6 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
+import { FaBalanceScale, FaCogs, FaUniversity, FaChalkboardTeacher, FaGraduationCap, FaChevronDown } from "react-icons/fa";
+
 import Image from 'next/image'; // importar el componente Image de Next.js
 export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
@@ -147,76 +149,78 @@ export default function Navbar() {
           </div>
         </li>
 
-        {/*Segunda opcion*/}
-        <li className="flex flex-col">
-          {/*Boton que despliega el menu de opciones de Oferta Academica (Oculto en vista de PC)*/}
-          <button
-            onClick={() => Menu(2)}
-            className={`py-10 px-8 flex flex-row justify-start items-center md:hidden ${
-              scrolled ? "hover:bg-blue-700" : "hover:bg-blue-700"
-            }`}
-          >
-            <img src="/images/OfertaAcademica.png" alt="WhiteShield" className="w-7" />
-            <span className="px-4">Oferta Academica</span>
-            <img src="/images/Arrow.png" alt="LogoWhite" className="absolute w-[15px] right-5 Flecha" />
-          </button>
-
-          {/*Contenedor que almacena el menu de opciones de Oferta Academica, en vista de PC, se trabaja directamente con este contenedor*/}
-          <div
-            className={`${
-              open == 2
-                ? "transition-all duration-300"
-                : "transition-all duration-300 translate-x-[-100%]"
-            } z-20 absolute flex-col h-[100vh] w-[100%] top-[0vh] bg-white text-black
-            md:translate-x-[0] md:static  md:flex md:flex-col md:h-auto md:w-auto md:bg-transparent md:items-center group`}
-          >
-            {/*Boton que cierra el menu desplegable (Oculto en vista de PC)*/}
-            <div className="flex w-[100%] justify-end md:hidden">
-              <button onClick={() => Menu(0)} className=" w-[70px] h-[50px] flex m-1 justify-center items-center">
-                <div className="absolute w-[35px] h-[3px] bg-black rotate-45"></div>
-                <div className="absolute w-[35px] h-[3px] bg-black -rotate-45"></div>
-              </button>
-            </div>
-
-            {/*Link para la pagina de Oferta Academica*/}
-            <Link
-              href="/ofertaAcademica"
-              className={`py-10 px-3 text-center flex flex-row justify-center items-center md:py-2 ${
-                scrolled ? "md:text-black" : "md:text-white md:hover:bg-transparent"
-              }`}
-            >
-              Oferta academica
-            </Link>
-            <ul className="md:bg-white md:absolute md:text-black md:w-[300%] md:top-[130%] md:opacity-0 md:invisible md:group-hover:visible md:group-hover:opacity-100 transition-all duration-300 md:group-hover:-translate-y-3">
-              <li>
-                <Link href="/ofertaAcademica/fics" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Facultad de Ingenieria y Ciencias Naturales
-                </Link>
-              </li>
-              <li>
-                <Link href="/ofertaAcademica/fecs" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Facultad de Economia y Ciencias Sociales
-                </Link>
-              </li>
-              <li>
-                <Link href="/ofertaAcademica/fcj" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Facultad de Ciencias Juridicas
-                </Link>
-              </li>
-              <li>
-                <Link href="/ofertaAcademica/escuelaEducacion" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Escuela de Educacion
-                </Link>
-              </li>
-              <li>
-                <Link href="/ofertaAcademica/maestrias" className="py-10 px-3 text-center flex flex-row justify-center items-center hover:bg-gray-300">
-                  Maestrias
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </li>
-
+     <li className="flex flex-col relative">
+  <div className="flex items-center w-full py-10 px-8 md:py-2 md:px-4">
+    <img src="/images/OfertaAcademica.png" alt="OfertaAcademica" className="w-7" />
+    <Link
+      href="/ofertaAcademica"
+      className="px-4 font-semibold"
+      style={{ flex: 1 }}
+    >
+      Oferta Académica
+    </Link>
+    <button
+      onClick={() => Menu(2)}
+      aria-expanded={open === 2}
+      aria-controls="oferta-academica-menu"
+      className="ml-2 flex items-center justify-center"
+      style={{ width: 32, height: 32 }}
+    >
+      <FaChevronDown
+        className={`transition-transform duration-200 ${open === 2 ? "rotate-180" : ""}`}
+        size={24}
+        color="white"
+      />
+    </button>
+  </div>
+  {open === 2 && (
+    <ul
+      id="oferta-academica-menu"
+      className="md:bg-white md:absolute md:text-black md:w-[1000px] md:top-[100%] md:left-1/2 md:-translate-x-1/2 shadow-lg grid grid-cols-1 md:grid-cols-3 gap-8 p-8 z-50 bg-white"
+    >
+      <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+        <FaBalanceScale size={40} className="text-blue-700" />
+        <h3 className="font-bold mt-4">Facultad de Ciencias Jurídicas</h3>
+        <p className="text-gray-600 text-sm mt-2">Formar profesionales del derecho con dominio de los...</p>
+        <Link href="/ofertaAcademica/fcj" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+          Conocer más <span>→</span>
+        </Link>
+      </li>
+      <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+        <FaCogs size={40} className="text-blue-700" />
+        <h3 className="font-bold mt-4">Facultad de Ingeniería y Ciencias Naturales</h3>
+        <p className="text-gray-600 text-sm mt-2">Bienvenidos a la Facultad de Ciencias Naturales e Ingeniería...</p>
+        <Link href="/ofertaAcademica/fics" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+          Conocer más <span>→</span>
+        </Link>
+      </li>
+      <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+        <FaUniversity size={40} className="text-blue-700" />
+        <h3 className="font-bold mt-4">Facultad de Economía y Ciencias Sociales</h3>
+        <p className="text-gray-600 text-sm mt-2">La Facultad de Ciencias Sociales y Económicas...</p>
+        <Link href="/ofertaAcademica/fecs" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+          Conocer más <span>→</span>
+        </Link>
+      </li>
+      <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+        <FaChalkboardTeacher size={40} className="text-blue-700" />
+        <h3 className="font-bold mt-4">Escuela de Educación</h3>
+        <p className="text-gray-600 text-sm mt-2"></p>
+        <Link href="/ofertaAcademica/escuelaEducacion" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+          Conocer más <span>→</span>
+        </Link>
+      </li>
+      <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+        <FaGraduationCap size={40} className="text-blue-700" />
+        <h3 className="font-bold mt-4">Maestrías</h3>
+        <p className="text-gray-600 text-sm mt-2"></p>
+        <Link href="/ofertaAcademica/maestrias" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+          Conocer más <span>→</span>
+        </Link>
+      </li>
+    </ul>
+  )}
+</li>
         {/*Tercera opcion*/}
         <li className="flex flex-col">
           {/*Boton que despliega el menu de opciones de Institución (Oculto en vista de PC)*/}
