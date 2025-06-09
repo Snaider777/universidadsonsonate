@@ -165,7 +165,7 @@ export default function Navbar() {
   {open === 2 && (
     <ul
       id="oferta-academica-menu"
-      className="md:bg-white md:absolute md:text-black md:w-[1000px] md:top-[100%] md:left-1/2 md:-translate-x-1/2 shadow-lg grid grid-cols-1 md:grid-cols-3 gap-8 p-8 z-50 bg-white"
+      className="md:bg-white md:absolute md:text-black md:w-[1100px] md:top-[100%] md:left-1/2 md:-translate-x-1/2 shadow-lg grid grid-cols-1 md:grid-cols-3 gap-8 p-8 z-50 bg-white"
     >
       <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
         <FaBalanceScale size={40} className="text-blue-700" />
