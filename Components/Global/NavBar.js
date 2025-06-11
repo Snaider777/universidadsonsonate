@@ -110,32 +110,40 @@ export default function Navbar() {
     </button>
   </div>
   {open === 1 && (
-    <ul
-  id="admisiones-menu"
-  className="md:bg-white md:absolute md:text-black md:w-[400px] md:top-[100%] md:left-1/2 md:-translate-x-1/2 shadow-lg flex flex-col gap-2 p-6 z-50 bg-white"
->
-  <li>
-    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
-      <FaMoneyBillWave className="text-blue-700" /> Aranceles Institucionales
-    </Link>
-  </li>
-  <li>
-    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
-      <FaCalendarAlt className="text-blue-700" /> Calendario Académico
-    </Link>
-  </li>
-  <li>
-    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
-      <FaBookOpen className="text-blue-700" /> Instructivo de Matrícula
-    </Link>
-  </li>
-  <li>
-    <Link href="/" className="py-2 px-3 flex flex-row items-center gap-2 hover:bg-gray-300 rounded">
-      <FaGavel className="text-blue-700" /> Reglamentos
-    </Link>
-  </li>
-</ul>
-  )}
+  <ul
+    id="admisiones-menu"
+    className="md:bg-white md:absolute md:text-black md:w-[1100px] md:mx-auto shadow-lg grid grid-cols-1 md:grid-cols-4 gap-8 p-8 z-50 bg-white"
+  >
+    <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+      <FaMoneyBillWave className="text-blue-700" size={40} />
+      <span className="font-bold mt-4">Aranceles Institucionales</span>
+      <Link href="/" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+        Conocer más <span>→</span>
+      </Link>
+    </li>
+    <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+      <FaCalendarAlt className="text-blue-700" size={40} />
+      <span className="font-bold mt-4">Calendario Académico</span>
+      <Link href="/" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+        Conocer más <span>→</span>
+      </Link>
+    </li>
+    <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+      <FaBookOpen className="text-blue-700" size={40} />
+      <span className="font-bold mt-4">Instructivo de Matrícula</span>
+      <Link href="/" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+        Conocer más <span>→</span>
+      </Link>
+    </li>
+    <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
+      <FaGavel className="text-blue-700" size={40} />
+      <span className="font-bold mt-4">Reglamentos</span>
+      <Link href="/" className="mt-4 text-green-600 font-semibold flex items-center gap-1 hover:underline">
+        Conocer más <span>→</span>
+      </Link>
+    </li>
+  </ul>
+)}
 </li>
 {/*Segunda opcion*/}
      <li className="flex flex-col relative">
@@ -165,7 +173,7 @@ export default function Navbar() {
   {open === 2 && (
     <ul
       id="oferta-academica-menu"
-      className="md:bg-white md:absolute md:text-black md:w-[1100px] md:top-[100%] md:left-1/2 md:-translate-x-1/2 shadow-lg grid grid-cols-1 md:grid-cols-3 gap-8 p-8 z-50 bg-white"
+      className="md:bg-white md:absolute md:text-black md:w-[1100px] md:top-[100%] md:left-1/2 md:-translate-x-1/2 shadow-lg grid grid-cols-1 md:grid-cols-5 gap-8 p-8 z-50 bg-white"
     >
       <li className="flex flex-col items-start bg-white rounded-lg shadow p-6">
         <FaBalanceScale size={40} className="text-blue-700" />
