@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Proyecto Web – Universidad de Sonsonate
+Este proyecto es una aplicación web moderna desarrollada para la Universidad de Sonsonate, utilizando Next.js y Tailwind CSS.
+El objetivo fue crear una plataforma digital con un diseño profesional, rápido y responsivo, que permitiera mejorar la gestión y presentación de la información institucional.
 
-## Getting Started
+Características principales
+⚡ Alto rendimiento gracias a Next.js con renderizado del lado del servidor
 
-First, run the development server:
+🎨 Interfaz moderna y atractiva implementada con Tailwind CSS
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+📱 Diseño totalmente responsivo, optimizado para dispositivos móviles y escritorio
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🏫 Solución personalizada orientada a las necesidades de la Universidad de Sonsonate
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Tecnologías utilizadas
+Next.js – Framework de React para aplicaciones escalables y de producción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Tailwind CSS – Framework CSS de utilidades para un diseño ágil y flexible
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Propósito
+Este proyecto forma parte de mi portafolio profesional, demostrando mis habilidades en el desarrollo de aplicaciones web modernas, diseño responsivo y uso de tecnologías actuales. Representa mi capacidad para transformar requerimientos en soluciones tecnológicas eficientes y aplicables a entornos reales.
